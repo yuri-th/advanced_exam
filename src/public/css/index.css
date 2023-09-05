@@ -1,0 +1,182 @@
+.search__contents {
+    display: flex;
+}
+
+.search__contents select {
+    padding: 16px 16px 16px 10px;
+    border: none;
+    background-color: #fff;
+    font-size: 1.4rem;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.area__search {
+    width: 110px;
+    position: relative;
+}
+
+.area__search select {
+    width: 100%;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 4px 3px 4px #a9a9a9;
+}
+
+.area__search::after {
+    content: "\f0d7";
+    color: #dcdcdc;
+    font-family: FontAwesome;
+    font-size: 2.5rem;
+    position: absolute;
+    right: 10%;
+    top: 20%;
+}
+
+.genre__search {
+    width: 110px;
+    position: relative;
+}
+
+.genre__search select {
+    width: 100%;
+    border-radius: 0;
+    padding-right: 10px;
+    box-shadow: 4px 3px 4px #a9a9a9;
+}
+
+/* 縦線 */
+.genre__search::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    background: #dcdcdc;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    width: 1.5px;
+    height: 50%;
+}
+
+.genre__search span::after {
+    content: "";
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    content: "\f0d7";
+    color: #dcdcdc;
+    font-family: FontAwesome;
+    font-size: 2.5rem;
+    position: absolute;
+
+}
+
+.genre__search::after {
+    content: "";
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    background: #dcdcdc;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    width: 1.5px;
+    height: 50%;
+}
+
+.shop__search {
+    width: 370px;
+    position: relative;
+}
+
+.shop__search::before {
+    content: "\f002";
+    color: #dcdcdc;
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 30%;
+}
+
+.shop__search input {
+    width: 100%;
+    padding: 16px 0 16px 30px;
+    border: none;
+    background-color: #fff;
+    font-size: 1.4rem;
+    outline: none;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 4px 3px 4px #a9a9a9;
+}
+
+/* 店舗一覧 */
+
+.shop__flex--item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    padding-right: 5.3%;
+    padding-left: 5.3%;
+    flex-wrap: wrap;
+}
+
+.shop__card {
+    width: 24%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    border-radius: 8px;
+}
+
+.shop__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 8px 8px 0 0;
+}
+
+.card__content {
+    padding: 13px 25px;
+}
+
+.card__ttl {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tag {
+    display: flex;
+    font-size: 1.3rem;
+    gap: 3px;
+    white-space: nowrap;
+}
+
+.card__button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__button--details {
+    border: none;
+    padding: 8px 12px;
+    background: #0066ff;
+    margin-bottom: 13px;
+    display: inline-block;
+    color: #fff;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    border-radius: 5px;
+}
+
+.card__button--like {
+    border: none;
+    background: none;
+    color: #dcdcdc;
+    font-size: 3rem;
+}
+
+/* クリック時のスタイル
+#change__btn.clicked {
+    background-color: #e74c3c;
+} */
