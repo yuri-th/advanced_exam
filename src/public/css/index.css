@@ -115,8 +115,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 35px;
-    padding-right: 5.3%;
-    padding-left: 5.3%;
     flex-wrap: wrap;
 }
 
@@ -125,6 +123,7 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
     background: #fff;
     border-radius: 8px;
+    margin-bottom: 25px;
 }
 
 .shop__img img {

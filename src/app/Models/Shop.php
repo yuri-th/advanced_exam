@@ -27,4 +27,16 @@ class Shop extends Model
     public function getGenre(){
         return ($this->genres)->name;
     }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like');
+    }
+
+    // エリア検索
+    public function scopeAreaSearch($query, $area_id)
+    {
+        $query->where('area_id', $area_id);
+    }
+
 }

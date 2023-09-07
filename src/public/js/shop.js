@@ -1,8 +1,17 @@
-// ボタン要素を取得
-const button = document.getElementById('change__btn');
+// 予約フォーム
+// テキストボックスの値を取得
+// var textBoxValue = document.getElementById("reservation_date").value;
 
-// ボタンがクリックされたときの処理
-button.addEventListener('click', () => {
-    // ボタンのクラスを変更して色を変える
-    button.classList.toggle('clicked');
+// フォームのフィールドにテキストボックスの値を設定
+// document.getElementById("reserve__form--confirm").elements["confirm__date"].value = textBoxValue;
+
+
+// エリア検索
+$(document).ready(function () {
+    $('#Prefecture_Select').keypress(function (e) {
+        if (e.which === 13) { // Enterキーが押された場合
+            e.preventDefault(); // デフォルトのEnterキーの動作をキャンセル
+            $('#Shop_Form').submit(); // フォームを送信
+        }
+    });
 });

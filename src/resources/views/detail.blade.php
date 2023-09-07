@@ -25,7 +25,7 @@
         <p class="shop__description">{{$shop_record->description}}</p>
     </div>
     @endforeach
-    <form class="reservation__form" action="" method="post">
+    <form class="reservation__form" action="" method="post" id="reserve__form">
         @csrf
         <div class="reservation__form--content">
             <h2>予約</h2>
@@ -64,25 +64,28 @@
                 </select>
             </div>
         </div>
-        <div class="reservation__form--confirm">
+        <div class="reservation__form--confirm" id="reserve__form--confirm">
+            @foreach ($shop_records as $shop_record)
             <div>
                 <label for="confirm__name" class="form-title">Shop</label>
-                <input type="text" name="confirm__name" id="confirm__name" />
+                <input type="text" name="confirm__name" value="{{$shop_record->name}}" readonly />               
             </div>
+            @endforeach
             <div>
                 <label for="confirm__date" class="form-title">Date</label>
-                <input type="text" name="confirm__date" id="confirm__date" />
+                <input type="text" name="confirm__date" id="confirm__date" readonly />
             </div>
             <div>
                 <label for="confirm__time" class="form-title">Time</label>
-                <input type="text" name="confirm__time" id="confirm__time" />
+                <input type="text" name="confirm__time" id="confirm__time" readonly />
             </div>
             <div>
                 <label for="confirm__number" class="form-title">Number</label>
-                <input type="text" name="confirm__number" id="confirm__number" />
+                <input type="text" name="confirm__number" id="confirm__number" readonly />
             </div>
         </div>
         <button class="reservation__form--btn" type="submit">予約する</button>
     </form>
 </div>
+<script src="{{ asset('js/shop.js') }}"></script>
 @endsection

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\LikeController;
 
 
 /*
@@ -19,6 +20,8 @@ use App\Http\Controllers\ShopController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ShopController::class, 'index']);
+    Route::get('/area', [ShopController::class, 'search']);
+    Route::post('/like', [LikeController::class, 'create']);
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
  });
 

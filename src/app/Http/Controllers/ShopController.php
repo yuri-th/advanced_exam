@@ -18,4 +18,11 @@ class ShopController extends Controller
         $shop_record = Shop::where('id',$shop->id)->get();
         return view('detail',['shop_records' => $shop_record]);       
     }
+
+    // エリア検索
+    public function search(Request $request)
+    {
+        $shop_cards = Shop::with('areas')->AreaSearch($request->area_id)->get();
+        return view('index',['shop_cards' => $shop_cards]);
+    }
 }
