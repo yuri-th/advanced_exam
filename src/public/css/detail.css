@@ -133,7 +133,7 @@
     left: 0;
     background-color: #0033ff;
     border: none;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     color: #fff;
     font-size: 1.6rem;
 }

@@ -2,15 +2,14 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 @endsection
 
 @section('header')
 <div class="search__contents">
     <div class="area__search">
-        <form class="form" action="/area" method="get" id='Shop_Form'>
+        <form class="form" action="/area" method="get" id="Area_Form">
             @csrf
-            <select name="area_id" id="Prefecture_Select" >
+            <select name="area_id" id="Area_Select">
                 <option value="">All area</option>
                 <option value="1">東京都</option>
                 <option value="2">大阪府</option>
@@ -19,21 +18,24 @@
         </form>
     </div>
     <div class="genre__search">
-        <form class="form" action="/" method="get">
+        <form class="form" action="/genre" method="get" id="Genre_Form">
             @csrf
-            <select name="genre">
+            <select name="genre_id" id="Genre_Select">
                 <option value="">All genre</option>
-                <option value="寿司">寿司</option>
-                <option value="焼肉">焼肉</option>
-                <option value="居酒屋">居酒屋</option>
-                <option value="居酒屋">イタリアン</option>
-                <option value="居酒屋">ラーメン</option>
+                <option value="1">寿司</option>
+                <option value="2">焼肉</option>
+                <option value="3">居酒屋</option>
+                <option value="4">イタリアン</option>
+                <option value="5">ラーメン</option>
             </select>
         </form>
         <span></span>
     </div>
     <div class="shop__search">
-        <input type="text" name="shop" placeholder="Search...">
+        <form class="form" action="/shopname" method="get" id="Name_Form">
+            @csrf
+            <input type="text" name="name" id="Shop_Select" placeholder="Search...">
+        </form>
     </div>
 </div>
 @endsection

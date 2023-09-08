@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <script src="https://kit.fontawesome.com/dbdf1c424a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     @yield('css')
 </head>
 

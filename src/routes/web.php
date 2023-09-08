@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ReservationController;
 
 
 /*
@@ -20,9 +21,13 @@ use App\Http\Controllers\LikeController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ShopController::class, 'index']);
-    Route::get('/area', [ShopController::class, 'search']);
+    Route::get('/area', [ShopController::class, 'search_area']);
+    Route::get('/genre', [ShopController::class, 'search_genre']);
+    Route::get('/shopname', [ShopController::class, 'search_name']);
     Route::post('/like', [LikeController::class, 'create']);
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
+    Route::post('/reserve', [ReservationController::class, 'create']);
+    Route::get('/done', [ReservationController::class, 'create']);
  });
 
 Route::get('/thanks', [AuthController::class, 'thanks']);
