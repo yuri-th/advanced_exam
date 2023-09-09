@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
     Route::post('/reserve', [ReservationController::class, 'create']);
     Route::get('/done', [ReservationController::class, 'create']);
+    Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
 Route::get('/thanks', [AuthController::class, 'thanks']);

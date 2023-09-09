@@ -21,4 +21,8 @@ class Reservation extends Model
         return $this->belongsTo('App\Models\User', "user_id");
     }
 
+    public function shopName(){
+        return ($this->shops)->name;
+    }
+
 }

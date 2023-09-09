@@ -41,7 +41,6 @@
 @endsection
 
 @section('content')
-
 <div class="shop__flex--item">
     @foreach ($shop_cards as $shop_card)
     <div class="shop__card">

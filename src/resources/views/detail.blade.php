@@ -70,7 +70,7 @@
                 <div>
                     <label for="confirm__name" class="form-title">Shop</label>
                     <input type="text" name="name" value="{{$shop_record->name}}" readonly />
-                    <input type="hidden" name="shop_id" value="{{$shop_record->id}}"
+                    <input type="hidden" name="shop_id" value="{{$shop_record->id}}">
                 </div>
                 @endforeach
                 <div>

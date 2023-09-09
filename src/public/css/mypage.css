@@ -1,0 +1,139 @@
+.mypage {
+    text-align: center;
+}
+
+.mypage__content {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 60px;
+}
+
+.reservation__status {
+    width: 35%;
+}
+
+.reservation__status h2 {
+    text-align: left;
+}
+
+.reservation__status-icon {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+
+.icon__clock--size,
+.icon__delete--size {
+    font-size: 2.5rem;
+}
+
+.icon__clock--size::after {
+    content: "予約";
+    font-size: 1.6rem;
+    padding-left: 30px;
+    vertical-align: middle;
+}
+
+.reservation__form {
+    /* width: 47%; */
+    margin-top: 35px;
+    background: #0066ff;
+    border-radius: 5px;
+    color: #fff;
+    padding: 35px;
+    text-align: left;
+}
+
+.form-title {
+    display: inline-block;
+    width: 20%;
+    color: #fff;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.reservation__form input {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+/* お気に入り店舗一覧 */
+
+.favorite__store {
+    width: 58%;
+}
+
+.favorite__store h2 {
+    text-align: left;
+}
+
+.favorite__store-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.shop__card {
+    width: 45%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.shop__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 8px 8px 0 0;
+}
+
+.card__content {
+    padding: 13px 25px;
+}
+
+.card__ttl {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tag {
+    display: flex;
+    font-size: 1.3rem;
+    gap: 3px;
+    white-space: nowrap;
+}
+
+.card__button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__button--details {
+    border: none;
+    padding: 8px 12px;
+    background: #0066ff;
+    margin-bottom: 13px;
+    display: inline-block;
+    color: #fff;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    border-radius: 5px;
+}
+
+.card__button--like {
+    border: none;
+    background: none;
+    color: #dcdcdc;
+    font-size: 3rem;
+}
