@@ -26,6 +26,15 @@ class ReservationController extends Controller
                 'start_at' =>$start_at,               
             ]);
 
-            return view("/done",compact('shop'));
-    }    
+            return view('/done',compact('shop'));
+    }
+    
+    // 予約の取り消し
+    public function delete(Request $request)
+    {   
+        $user = Auth::id();
+        Reservation::with('users')->where('user_id', $user)->where('shop_id',$request->shop_id)->delete();
+        
+        return redirect('/mypage'); 
+    }
 }

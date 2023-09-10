@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/like', [LikeController::class, 'create']);
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
     Route::post('/reserve', [ReservationController::class, 'create']);
+    Route::post('/reserve/delete', [ReservationController::class, 'delete']);
     Route::get('/done', [ReservationController::class, 'create']);
     Route::get('/mypage', [UserController::class, 'mypage']);
  });

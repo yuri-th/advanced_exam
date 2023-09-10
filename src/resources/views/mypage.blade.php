@@ -13,10 +13,15 @@
         <div class="reservation__status">
             <h2>予約状況</h2>
             @foreach ($reserves as $reserve)
-            <form class="reservation__form" action="" method="post">
+            <div class="reservation__form">
                 <div class="reservation__status-icon">
                     <div class="icon__clock"><i class="far fa-clock icon__clock--size"></i></div>
-                    <div class="icon__delete"><i class="far fa-times-circle icon__delete--size"></i></div>
+                    <form class="delete__form" action="/reserve/delete" method="post">
+                        @csrf
+                        <button class="icon__delete" type="submit"><i class="far fa-times-circle icon__delete--size"></i>
+                        </button>
+                        <input type="hidden" name="shop_id" value="{{$reserve->shop_id}}">
+                    </form>
                 </div>
                 <div>
                     <label for="confirm__name" class="form-title">Shop</label>
@@ -36,7 +41,7 @@
                     <label for="confirm__number" class="form-title">Number</label>
                     <input type="text" name="number" value="{{$reserve->num_of_users}}人" readonly />
                 </div>
-            </form>
+            </div>
             @endforeach
         </div>
         <div class="favorite__store">
@@ -62,7 +67,7 @@
                             <form class="form" action="/like" method="post">
                                 @csrf
                                 <button class="card__button--like" type="submit"><i class="fas fa-heart"></i></button>
-                                <input type="hidden" name="shop_id" value="" />
+                                <input type="hidden" name="shop_id" value="{{$shop->id}}" />
                             </form>
                         </div>
                     </div>
