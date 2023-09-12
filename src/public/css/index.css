@@ -145,8 +145,14 @@
 
 .tag {
     display: flex;
+    gap: 5px;
+}
+
+.card__tag--area,
+.card__tag--genre {
+    border: none;
+    background: none;
     font-size: 1.3rem;
-    gap: 3px;
     white-space: nowrap;
 }
 
@@ -175,7 +181,10 @@
     font-size: 3rem;
 }
 
-/* クリック時のスタイル
-#change__btn.clicked {
-    background-color: #e74c3c;
-} */
+.favorite {
+    color: red;
+}
+
+.not-favorite {
+    color: #dcdcdc;
+}

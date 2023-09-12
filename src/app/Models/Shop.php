@@ -33,6 +33,12 @@ class Shop extends Model
         return $this->hasMany('App\Models\Like');
     }
 
+//     // お気に入り色変更
+//     public function getLike(){
+//     $shopIds = $this->likes->pluck('shop_id'); // すべてのLikeモデルのshop_idを抽出
+//     return $shopIds;
+// }
+
     public function reservations()
     {
         return $this->hasMany('App\Models\Reservation');

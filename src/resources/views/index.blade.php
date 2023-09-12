@@ -50,8 +50,16 @@
         <div class="card__content">
             <h2 class="card__ttl">{{$shop_card->name}}</h2>
             <div class="tag">
-                <p class="card__tag--area">#{{$shop_card->getArea()}}</p>
-                <p class="card__date--genre">#{{$shop_card->getGenre()}}</p>
+                <form class="form" action="/area" method="get">
+                    @csrf
+                    <button class="card__tag--area" type="submit">#{{$shop_card->getArea()}}</button>
+                    <input type="hidden" name="area_id" value="{{$shop_card->area_id}}" />
+                </form>
+                <form class="form" action="/genre" method="get">
+                    @csrf
+                    <button class="card__tag--genre" type="submit">#{{$shop_card->getGenre()}}</button>
+                    <input type="hidden" name="genre_id" value="{{$shop_card->genre_id}}" />
+                </form>
             </div>
             <div class="card__button">
                 <form class="form" action="/detail/{{$shop_card->id}}" method="get">
@@ -60,8 +68,14 @@
                 </form>
                 <form class="form" action="/like" method="post">
                     @csrf
-                    <button class="card__button--like" type="submit"><i class="fas fa-heart"></i></button>
                     <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
+
+                    @if($shop_card->shop_id)<!-- お気に入り状態に応じて条件分岐 -->
+                    <button class="card__button--like favorite" type="submit"><i class="fas fa-heart"></i></button>
+                    @else
+                    <button class="card__button--like not-favorite" type="submit"><i class="fas fa-heart"></i></button>
+                    @endif
+
                 </form>
             </div>
         </div>

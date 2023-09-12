@@ -19,8 +19,16 @@
             <img src="{{$shop_record->image_url}}" alt="{{$shop_record->getGenre()}}" />
         </div>
         <div class="tag">
-            <p class="shop__tag--area">#{{$shop_record->getArea()}}</p>
-            <p class="shop__tag--genre">#{{$shop_record->getGenre()}}</p>
+            <form class="form" action="/area" method="get">
+                @csrf
+                <button class="shop__tag--area" type="submit">#{{$shop_record->getArea()}}</button>
+                <input type="hidden" name="area_id" value="{{$shop_record->area_id}}" />
+            </form>
+            <form class="form" action="/genre" method="get">
+                @csrf
+                <button class="shop__tag--genre" type="submit">#{{$shop_record->getGenre()}}</button>
+                <input type="hidden" name="genre_id" value="{{$shop_record->genre_id}}" />
+            </form>
         </div>
         <p class="shop__description">{{$shop_record->description}}</p>
     </div>

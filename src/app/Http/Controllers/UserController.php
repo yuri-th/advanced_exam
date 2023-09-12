@@ -13,13 +13,16 @@ class UserController extends Controller
     public function mypage()
     {
         // 予約状況
-        $user = Auth::id();
+        $user = Auth::id();       
         $reserves = Reservation::where('user_id', $user)->get();
-        
+                
         // お気に入り
         $likes = Like::where('user_id', $user)->pluck('shop_id');
         $shops = Shop::whereIn('id', $likes)->get();
         
-        return view('/mypage',['reserves' => $reserves],['shops' => $shops]);
+        return view('/mypage',[
+            'reserves' => $reserves,
+            'shops' => $shops
+        ]);
     }
 }

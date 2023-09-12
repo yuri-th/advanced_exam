@@ -8,6 +8,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,8 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 
 Route::middleware('auth')->group(function () {
@@ -33,7 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
-Route::get('/thanks', [AuthController::class, 'thanks']);
+Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
+
+
 
 // // 画像のアップロード
 // Route::get('/upload/upload', [UploadController::class, 'showUploadForm'])->name('upload.form');

@@ -55,8 +55,14 @@
 .tag {
     margin-top: 3rem;
     display: flex;
-    font-size: 1.6rem;
     gap: 5px;
+}
+
+.shop__tag--area,
+.shop__tag--genre {
+    font-size: 1.6rem;
+    border: none;
+    background: none;
 }
 
 .shop__description {
