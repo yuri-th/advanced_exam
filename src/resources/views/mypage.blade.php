@@ -69,6 +69,7 @@
                                 @csrf
                                 <button class="card__tag--genre">#{{$shop->getGenre()}}</button>
                                 <input type="hidden" name="genre_id" value="{{$shop->genre_id}}" />
+                            </form>
                         </div>
                         <div class="card__button">
                             <form class="form" action="/detail/{{$shop->id}}" method="get">
@@ -77,8 +78,26 @@
                             </form>
                             <form class="form" action="/like" method="post">
                                 @csrf
-                                <button class="card__button--like" type="submit"><i class="fas fa-heart"></i></button>
                                 <input type="hidden" name="shop_id" value="{{$shop->id}}" />
+
+                                {{-- お気に入り色変更 --}}
+                                @php
+                                $isFavorite = false;
+                                foreach ($likes as $like) {
+                                if ($shop->id == $like) {
+                                $isFavorite = true;
+                                break;
+                                }
+                                }
+                                @endphp
+                                @if ($isFavorite)
+                                <button class="card__button--like favorite" type="submit"><i
+                                        class="fas fa-heart"></i></button>
+                                @else
+                                <button class="card__button--like not-favorite" type="submit"><i
+                                        class="fas fa-heart"></i></button>
+                                @endif
+
                             </form>
                         </div>
                     </div>

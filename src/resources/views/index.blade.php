@@ -34,7 +34,7 @@
     <div class="shop__search">
         <form class="form" action="/shopname" method="get" id="Name_Form">
             @csrf
-            <input type="text" name="name" id="Shop_Select" placeholder="Search...">
+            <input type="text" name="name" id="Shop_Select" placeholder="Search&thinsp;...">
         </form>
     </div>
 </div>
@@ -70,12 +70,22 @@
                     @csrf
                     <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
 
-                    @if($shop_card->shop_id)<!-- お気に入り状態に応じて条件分岐 -->
+                    {{-- お気に入り色変更 --}}
+                    @php
+                    $isFavorite = false;
+                    foreach ($favorite_shops as $favorite_shop) {
+                    if ($shop_card->id == $favorite_shop->shop_id) {
+                    $isFavorite = true;
+                    break;
+                    }
+                    }
+                    @endphp
+
+                    @if ($isFavorite)
                     <button class="card__button--like favorite" type="submit"><i class="fas fa-heart"></i></button>
                     @else
                     <button class="card__button--like not-favorite" type="submit"><i class="fas fa-heart"></i></button>
                     @endif
-
                 </form>
             </div>
         </div>

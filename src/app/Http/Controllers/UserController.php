@@ -22,7 +22,8 @@ class UserController extends Controller
         
         return view('/mypage',[
             'reserves' => $reserves,
-            'shops' => $shops
+            'shops' => $shops,
+            'likes'=>$likes
         ]);
     }
 }

@@ -61,7 +61,10 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => '/thanks',
+    // RouteServiceProvider::HOME,
+    
+    
     
     
     
@@ -148,5 +151,7 @@ return [
         ]),
         
     ],
+
+    // 'registered' => '/thanks', // ユーザー登録後のリダイレクト先を指定
 
 ];

@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
-Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
+Route::get('/thanks', [AuthController::class, 'thanks']);
 
 
 

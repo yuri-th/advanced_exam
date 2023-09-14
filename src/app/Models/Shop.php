@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Shop extends Model
 {
@@ -32,12 +33,12 @@ class Shop extends Model
     {
         return $this->hasMany('App\Models\Like');
     }
-
-//     // お気に入り色変更
-//     public function getLike(){
-//     $shopIds = $this->likes->pluck('shop_id'); // すべてのLikeモデルのshop_idを抽出
-//     return $shopIds;
-// }
+    
+    // 中間テーブル用
+    public function userlikes(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class,'likes');
+    }
 
     public function reservations()
     {

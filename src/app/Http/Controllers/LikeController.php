@@ -12,6 +12,7 @@ class LikeController extends Controller
      public function create(Request $request)
     {
         $shop_id = request('shop_id');
+        
         $user = Auth::id();
         $like = Like::where('user_id', $user)->where('shop_id',$shop_id)->select('shop_id')->get();
         
