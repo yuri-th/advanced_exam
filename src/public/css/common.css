@@ -70,7 +70,7 @@ li {
 }
 
 .main {
-    padding: 5px 5px 100px;
+    padding: 5px 5px 10px;
     margin: 0 auto;
 }
 
@@ -209,9 +209,9 @@ li {
         display: block;
     }
 
-    .header {
-        margin: 0 30px;
-    }
+    /* .header {
+        margin: 0 5px;
+    } */
 
     .header__inner {
         padding-right: 25px;

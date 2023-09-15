@@ -11,7 +11,7 @@
 }
 
 .reservation__status {
-    width: 38%;
+    width: 45%;
 }
 
 .reservation__status h2 {
@@ -61,7 +61,7 @@
     width: 20%;
     color: #fff;
     margin-bottom: 12px;
-    margin-right: 30px;
+    margin-right: 11px;
     white-space: nowrap;
     text-align: left;
     font-size: 1.6rem;
@@ -81,11 +81,12 @@
 /* お気に入り店舗一覧 */
 
 .favorite__store {
-    width: 55%;
+    width: 50%;
 }
 
 .favorite__store h2 {
     text-align: left;
+    white-space: nowrap;
 }
 
 .favorite__store-list {
@@ -96,7 +97,7 @@
 }
 
 .shop__card {
-    width: 45%;
+    width: 48%;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
     background: #fff;
     border-radius: 8px;
@@ -164,4 +165,36 @@
 
 .not-favorite {
     color: #dcdcdc;
+}
+
+@media screen and (max-width: 767px) {
+
+    .mypage__content {
+        margin: 0 auto;
+        display: block;
+        max-width: 500px;
+    }
+
+    .reservation__status {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .form-title {
+        margin-right: 20px;
+    }
+
+    .favorite__store {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .shop__card {
+        width: 48%;
+    }
+
+    .card__content {
+        padding: 13px 15px;
+    }
+
 }

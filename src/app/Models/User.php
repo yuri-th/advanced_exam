@@ -53,10 +53,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Reservation');
     }
 
-    // 中間テーブル用
-    public function shoplikes(): BelongsToMany
-    {
-        return $this->belongsToMany(Shop::class);
-    }
+    // // 中間テーブル用
+    // public function shoplikes(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Shop::class);
+    // }
    
 }

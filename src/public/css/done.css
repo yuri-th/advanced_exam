@@ -1,21 +1,15 @@
 .done__content {
     margin: 0 auto;
     padding: 0;
-    max-width: 1230px;
+    max-width: 530px;
 }
 
 .done__card {
     margin: 30px auto 0;
     padding: 100px 0;
-    width: 44%;
     background: #fff;
     box-shadow: 3px 3px 3px #a9a9a9;
     border-radius: 5px;
-}
-
-.done__card-text {
-    width: 100%;
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -42,4 +36,17 @@ a {
 h1 {
     font-weight: 400;
     font-size: 28px;
+}
+
+/*sp*/
+@media screen and (max-width: 767px) {
+
+    .done__content {
+        max-width: 450px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
 }

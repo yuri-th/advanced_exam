@@ -12,9 +12,7 @@
     <div class="mypage__content">
         <div class="reservation__status">
             <h2>予約状況</h2>
-
             @foreach ($reserves as $index => $reserve)
-
             <div class="reservation__form">
                 <div class="reservation__status-icon">
                     <div class="icon__clock"><i class="far fa-clock icon__clock--size"></i><span>{{ $index + 1 }}</span>
@@ -51,7 +49,6 @@
         <div class="favorite__store">
             <h2>お気に入り店舗</h2>
             <div class="favorite__store-list">
-
                 @foreach ($shops as $shop)
                 <div class="shop__card">
                     <div class="shop__img">
