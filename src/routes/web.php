@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopmanageController;
 
 
 
@@ -24,22 +25,28 @@ use App\Http\Controllers\UserController;
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/thanks', [AuthController::class, 'thanks']);
     Route::get('/', [ShopController::class, 'index']);
     Route::get('/area', [ShopController::class, 'search_area']);
     Route::get('/genre', [ShopController::class, 'search_genre']);
     Route::get('/shopname', [ShopController::class, 'search_name']);
-    Route::post('/like', [LikeController::class, 'create']);
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
+    Route::post('/like', [LikeController::class, 'create']);
     Route::post('/reserve', [ReservationController::class, 'create']);
+    Route::patch('/reserve/update', [ReservationController::class, 'update']);
     Route::post('/reserve/delete', [ReservationController::class, 'delete']);
     Route::get('/done', [ReservationController::class, 'create']);
     Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
-Route::get('/thanks', [AuthController::class, 'thanks']);
+// 店舗管理
+Route::get('/manage/shopmanage', [ShopController::class, 'shopmanage']);
+Route::post('/manage/shopmanage', [ShopController::class, 'create'])->name('shopmanage');
+Route::patch('/manage/shopmanage/update', [ShopController::class, 'update']);
+Route::get('/manage/shopmanage/update', [ShopController::class, 'update']);
 
 
 
-// // 画像のアップロード
-// Route::get('/upload/upload', [UploadController::class, 'showUploadForm'])->name('upload.form');
-// Route::post('/upload/upload', [UploadController::class, 'upload'])->name('upload');
+// Shop画像のアップロード
+Route::post('/upload/upload', [ShopController::class, 'upload'])->name('upload');
+Route::get('/upload/upload', [ShopController::class, 'upload'])->name('upload');

@@ -15,7 +15,9 @@
             @foreach ($reserves as $index => $reserve)
             <div class="reservation__form">
                 <div class="reservation__status-icon">
-                    <div class="icon__clock"><i class="far fa-clock icon__clock--size"></i><span>{{ $index + 1 }}</span>
+                    <div class="icon__clock"><i class="far fa-clock icon__clock--size"></i><span>{{
+                            $index + 1
+                            }}</span>
                     </div>
                     <form class="delete__form" action="/reserve/delete" method="post">
                         @csrf
@@ -25,27 +27,34 @@
                         <input type="hidden" name="id" value="{{$reserve->id}}">
                     </form>
                 </div>
-                <div>
-                    <label for="confirm__name" class="form-title">Shop</label>
-                    <input type="text" name="name" value="{{$reserve->shopName()}}" readonly />
-                    <input type="hidden" name="shop_id" value="{{$reserve->shop_id}}">
-                </div>
-
-                <div>
-                    <label for="confirm__date" class="form-title">Date</label>
-                    <input type="text" name="reservation_date" value="{{$reserve->date}}" readonly />
-                </div>
-                <div>
-                    <label for="confirm__time" class="form-title">Time</label>
-                    <input type="text" name="time" value="{{substr($reserve->start_at,0,5)}}" readonly />
-                </div>
-                <div>
-                    <label for="confirm__number" class="form-title">Number</label>
-                    <input type="text" name="number" value="{{$reserve->num_of_users}}人" readonly />
-                </div>
+                <form class="update__form" action="/reserve/update" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <div>
+                        <label for="confirm__name" class="form-title">Shop</label>
+                        <input type="text" name="name" value="{{$reserve->shopName()}}" readonly />
+                        <input type="hidden" name="shop_id" value="{{$reserve->shop_id}}">
+                        <input type="hidden" name="id" value="{{$reserve->id}}">
+                    </div>
+                    <div>
+                        <label for="confirm__date" class="form-title">Date</label>
+                        <input type="text" name="date" value="{{$reserve->date}}" />
+                    </div>
+                    <div>
+                        <label for="confirm__time" class="form-title">Time</label>
+                        <input type="text" name="start_at" value="{{substr($reserve->start_at,0,5)}}" />
+                    </div>
+                    <div class="confirm__number">
+                        <label for="confirm__number" class="form-title">Number</label>
+                        <input type="text" name="num_of_users" value="{{$reserve->num_of_users}}" />
+                        <span class="confirm__number-span">人</span>
+                    </div>
+                    <button class="reservation__change--btn" type="submit">変更する</button>
+                </form>
             </div>
             @endforeach
         </div>
+
         <div class="favorite__store">
             <h2>お気に入り店舗</h2>
             <div class="favorite__store-list">
@@ -94,7 +103,6 @@
                                 <button class="card__button--like not-favorite" type="submit"><i
                                         class="fas fa-heart"></i></button>
                                 @endif
-
                             </form>
                         </div>
                     </div>

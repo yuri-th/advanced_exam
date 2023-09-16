@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Like;
 use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,5 +53,62 @@ class ShopController extends Controller
         $favorite_shops= Like::where('user_id', $user)->get();
         return view('index',['shop_cards' => $shop_cards],['favorite_shops' => $favorite_shops]);
     }
+
+    //店舗画像の追加・表示
     
+    public function upload()
+    {
+        return view('/upload/upload');
+    }
+
+    // 店舗管理：店舗情報の表示
+
+    public function shopmanage()
+    {
+        $shop_infos = Shop::paginate(10);
+        return view('/manage/shopmanage',['shop_infos' => $shop_infos]);
+    }
+
+    // 店舗情報の作成
+    public function create(Request $request)
+    {
+        if ($request->get('action') === 'back') {
+            return redirect()->route('shopmanage')->withInput();
+        }
+
+        $info = $request->only([
+            'name',
+            'area_id',
+            'genre_id',
+            'image_url',
+            'description',
+        ]);
+
+        Shop::create($info);
+        return redirect('/manage/shopmanage');
+    }
+
+    // 店舗情報の更新
+    public function update(Request $request)
+    {
+        $shop_id = $request->only(['shop_id']);
+        $name= $request->input('name');
+        $area = $request->input('area');
+        $area_id = Area::where('name', $area)->pluck('id')->first();
+        $genre = $request->input('genre'); 
+        $genre_id = Genre::where('name', $genre)->pluck('id')->first();
+        $image_url = $request->input('image_url');
+        $description = $request->input('description');
+
+        Shop::where('id', $shop_id)->update([
+        'name' => $name, 
+        'area_id' => $area_id,
+        'genre_id' => $genre_id, 
+        'image_url'  => $image_url, 
+        'description'  => $description, 
+        ]);
+
+        return redirect('/manage/shopmanage');
+    }
+
 }

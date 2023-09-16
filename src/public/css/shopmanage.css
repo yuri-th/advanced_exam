@@ -1,0 +1,150 @@
+.shop__information {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.section__title {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.create-form__item {
+    margin: 0 auto;
+    margin-top: 40px;
+    border: #808080 solid 2px;
+    padding: 50px;
+}
+
+.create-form__item-parts {
+    margin: 0 auto;
+    width: 70%;
+    padding-bottom: 25px;
+}
+
+.create-form__item-parts label {
+    display: inline-block;
+    width: 20%;
+}
+
+.create-form__item-input {
+    display: inline-block;
+    outline: none;
+    width: 35%;
+    height: 30px;
+}
+
+.create-form__item-select {
+    width: 35%;
+    height: 30px;
+    outline: none;
+
+}
+
+.create-form__item-image {
+    display: inline-block;
+    width: 70%;
+    height: 30px;
+    outline: none;
+}
+
+.create-form__item-textarea {
+    display: inline-block;
+    width: 70%;
+    height: 100px;
+    vertical-align: middle;
+    outline: none;
+}
+
+.create-form__button-submit {
+    padding: 10px 100px;
+    margin-top: 30px;
+    font-size: 1.8rem;
+    border: none;
+    background: #0000cd;
+    color: #fff;
+}
+
+.create-form__button {
+    text-align: center;
+}
+
+/* ----------------テーブル部分---------------- */
+
+.shop__list {
+    margin-top: 30px;
+}
+
+
+.shop__table {
+    width: 100%;
+    text-align: left;
+}
+
+th {
+    width: 10%;
+    border-bottom: 1px solid #000;
+}
+
+th:nth-child(4) {
+    width: 20%;
+}
+
+th:nth-child(5) {
+    width: 25%;
+}
+
+th,
+td {
+    padding: 10px 15px;
+    word-break: break-all;
+}
+
+tr {
+    height: 60px;
+}
+
+.shop__table input {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+}
+
+.update button {
+    width: 80px;
+    height: 30px;
+    font-size: 1.6rem;
+    color: #ffffff;
+    background-color: #0000cd;
+    border: none;
+    border-radius: 5px;
+}
+
+/* -------------ページネーション------------- */
+.table-page {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.pagination li {
+    display: block;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    float: left;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.pagination .active {
+    background-color: #0066ff;
+    border: 1px solid #0066ff;
+    color: white;
+}
+
+.pagination li:hover:not(.active, .disabled) {
+    background-color: #ddd;
+}

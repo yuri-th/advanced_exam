@@ -37,4 +37,25 @@ class ReservationController extends Controller
         
         return redirect('/mypage'); 
     }
+
+    // 予約の更新
+    public function update(Request $request)
+    {
+        $user = Auth::id();
+        $date = $request->input('date');
+        $time = $request->input('start_at'); 
+        $number = $request->input('num_of_users');
+
+        Reservation::with('users')
+        ->where('user_id', $user)
+        ->where('id', $request->id)
+        ->update([
+        'date' => $date, // 日付の更新
+        'start_at' => $time, // 時間の更新
+        'num_of_users' => $number, // 人数の更新
+        ]);
+
+        return redirect('/mypage');
+    }
+
 }
