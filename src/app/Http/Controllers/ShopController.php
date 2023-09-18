@@ -66,7 +66,7 @@ class ShopController extends Controller
     public function shopmanage()
     {
         $shop_infos = Shop::paginate(10);
-        return view('/manage/shopmanage',['shop_infos' => $shop_infos]);
+        return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
     }
 
     // 店舗情報の作成
@@ -85,7 +85,7 @@ class ShopController extends Controller
         ]);
 
         Shop::create($info);
-        return redirect('/manage/shopmanage');
+        return redirect('/manage/shop_manage');
     }
 
     // 店舗情報の更新
@@ -108,7 +108,26 @@ class ShopController extends Controller
         'description'  => $description, 
         ]);
 
-        return redirect('/manage/shopmanage');
+        if ($request->currentPage == 1) {
+            return redirect($request->firstPage);
+        } else {
+            return back();
+        }
+    }
+
+    public function search_shop(Request $request)
+    {
+        if ($request->name !== null && $request->area_id !== null) {
+            $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)->KeywordSearch($request->name)->paginate(10);
+            return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
+        }else if($request->name !== null && $request->area_id == null){
+            $shop_infos = Shop::KeywordSearch($request->name)->paginate(10);
+            return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
+        }else if($request->name == null && $request->area_id !== null){
+            $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)
+            ->paginate(10);
+            return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
+        } 
     }
 
 }

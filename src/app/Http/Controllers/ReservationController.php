@@ -58,4 +58,10 @@ class ReservationController extends Controller
         return redirect('/mypage');
     }
 
+    public function reserveManage()
+    {
+        $shop_reserves = Reservation::paginate(5);
+        return view('/manage/reserve_manage',['shop_reserves' => $shop_reserves]);
+    }
+
 }

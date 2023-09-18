@@ -15,14 +15,14 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-ttl">
-                <a class="header__logo" href="/manage/shopmanage">
+                <a class="header__logo" href="/manage/shop_manage">
                     Shop Management
                 </a>
             </div>
             <nav class="header-nav">
                 <ul class="header-nav-list">
-                    <li class="header-nav-item"><a href="/manage/shopmanage">店舗情報</a></li>
-                    <li class="header-nav-item"><a href="">予約状況</a></li>
+                    <li class="header-nav-item"><a href="/manage/shop_manage">店舗情報</a></li>
+                    <li class="header-nav-item"><a href="/manage/reserve_manage">予約情報</a></li>
                 </ul>
             </nav>
         </div>
@@ -31,5 +31,4 @@
         @yield('content')
     </main>
 </body>
-
 </html>

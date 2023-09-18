@@ -25,4 +25,7 @@ class Reservation extends Model
         return ($this->shops)->name;
     }
 
+    public function shopUser(){
+        return ($this->users)->name;
+    }
 }
