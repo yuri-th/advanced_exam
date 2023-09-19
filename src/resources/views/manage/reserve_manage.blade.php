@@ -9,8 +9,8 @@
   <h2>予約情報</h2>
   <div class="form-contents">
     <div class="shop-search">
-      <form class="search-form" action="" method="get">
-
+      <form class="search-form" action="/manage/reserve_manage/search" method="get">
+        @csrf
         <div class="search-contents">
           <div class="search-item">
             <label for="name">店舗名</label>

@@ -9,7 +9,7 @@
   <h2>店舗情報</h2>
   <div class="form-contents">
     <div class="shop-search">
-      <form class="search-form" action="/manage/reserve_manage/search" method="get">
+      <form class="search-form" action="/manage/shop_manage/search" method="get">
         @csrf
         <div class="search-contents">
           <div class="search-item">

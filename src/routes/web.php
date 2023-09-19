@@ -43,10 +43,9 @@ Route::get('/manage/shop_manage', [ShopController::class, 'shopmanage']);
 Route::post('/manage/shop_manage', [ShopController::class, 'create'])->name('shopmanage');
 Route::patch('/manage/shop_manage/update', [ShopController::class, 'update']);
 Route::get('/manage/shop_manage/update', [ShopController::class, 'update']);
-Route::get('/manage/reserve_manage/search', [ShopController::class, 'search_shop']);
+Route::get('/manage/shop_manage/search', [ShopController::class, 'search_shop']);
 Route::get('/manage/reserve_manage', [ReservationController::class, 'reserveManage']);
-
-
+Route::get('/manage/reserve_manage/search', [ReservationController::class, 'search_reserve']);
 
 
 // Shop画像のアップロード

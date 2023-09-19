@@ -117,17 +117,16 @@ class ShopController extends Controller
 
     public function search_shop(Request $request)
     {
-        if ($request->name !== null && $request->area_id !== null) {
-            $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)->KeywordSearch($request->name)->paginate(10);
-            return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
-        }else if($request->name !== null && $request->area_id == null){
+        if($request->name !== null && $request->area_id == null){
             $shop_infos = Shop::KeywordSearch($request->name)->paginate(10);
             return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
         }else if($request->name == null && $request->area_id !== null){
             $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)
             ->paginate(10);
             return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
-        } 
+        } else {
+            $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)->KeywordSearch($request->name)->paginate(10);
+            return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
+        }
     }
-
 }

@@ -58,10 +58,28 @@ class ReservationController extends Controller
         return redirect('/mypage');
     }
 
+    // 管理ページ
+
     public function reserveManage()
     {
         $shop_reserves = Reservation::paginate(5);
         return view('/manage/reserve_manage',['shop_reserves' => $shop_reserves]);
     }
 
-}
+    public function search_reserve(Request $request)
+    {
+        if($request->name !== null && $request->area_id == null){
+            $shop = Shop::KeywordSearch($request->name)->pluck('id')->toArray();
+            $shop_reserves = Reservation::whereIn('shop_id', $shop)->paginate(5);
+            return view('/manage/reserve_manage', ['shop_reserves' => $shop_reserves]);
+        }else if ($request->name == null && $request->area_id !== null) {
+            $shop = Shop::where('area_id', $request->area_id)->pluck('id')->toArray();
+            $shop_reserves = Reservation::whereIn('shop_id', $shop)->paginate(5);
+            return view('/manage/reserve_manage', ['shop_reserves' => $shop_reserves]);
+        } else {
+            $shop = Shop::KeywordSearch($request->name)->where('area_id', $request->area_id)->pluck('id')->toArray();
+            $shop_reserves = Reservation::whereIn('shop_id', $shop)->paginate(5);
+            return view('/manage/reserve_manage', ['shop_reserves' => $shop_reserves]);            
+        }
+    }
+}  
