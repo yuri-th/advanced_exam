@@ -70,17 +70,17 @@
             <label for="description">店舗詳細</label>
             <textarea type="text" name="description"></textarea>
           </div>
+          <div class="create-button">
+            <button type="submit">新規作成</button>
+          </div>
+        </form>
       </div>
-      <div class="create-button">
-        <button type="submit">新規作成</button>
-      </div>
-      </form>
     </div>
   </div>
 
 
   <!-- 登録データ -->
-  <div class=shop-list>
+  <div class="shop-list">
     <div class="table-page">
       <div>
         @if (count($shop_infos) > 0)

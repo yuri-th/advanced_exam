@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ManagerController;
 
 
 
@@ -46,6 +47,8 @@ Route::get('/manage/shop_manage/update', [ShopController::class, 'update']);
 Route::get('/manage/shop_manage/search', [ShopController::class, 'search_shop']);
 Route::get('/manage/reserve_manage', [ReservationController::class, 'reserveManage']);
 Route::get('/manage/reserve_manage/search', [ReservationController::class, 'search_reserve']);
+Route::get('/manage/manager_manage', [ManagerController::class, 'manager']);
+Route::post('/manage/manager_manage', [ManagerController::class, 'create']);
 
 
 // Shop画像のアップロード

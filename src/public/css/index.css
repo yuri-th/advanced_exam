@@ -121,9 +121,16 @@
     flex-wrap: wrap;
 }
 
+.shop__flex--item::before {
+    content: "";
+    width: 24%;
+    order: 1;
+    margin-bottom: 25px;
+}
+
 .shop__flex--item:after {
     content: "";
-    width: 49%;
+    width: 24%;
     margin-bottom: 25px;
 }
 

@@ -33,7 +33,7 @@
     </div>
   </div>
   <!-- 登録データ -->
-  <div class=reserve-list>
+  <div class="reserve-list">
     <div class="table-page">
       <div>
         @if (count($shop_reserves) > 0)

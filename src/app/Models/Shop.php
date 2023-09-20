@@ -33,16 +33,15 @@ class Shop extends Model
     {
         return $this->hasMany('App\Models\Like');
     }
-    
-    // // 中間テーブル用
-    // public function userlikes(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(User::class,'likes');
-    // }
 
     public function reservations()
     {
         return $this->hasMany('App\Models\Reservation');
+    }
+
+    public function managers()
+    {
+        return $this->hasMany('App\Models\Manager');
     }
 
     // エリア検索

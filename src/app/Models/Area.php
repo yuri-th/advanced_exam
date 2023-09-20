@@ -14,4 +14,9 @@ class Area extends Model
     {
         return $this->hasMany('App\Models\Shop');
     }
+
+    public function managers()
+    {
+        return $this->hasMany('App\Models\Manager');
+    }
 }
