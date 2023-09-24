@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Http\Requests\ReservationRequest;
+use Illuminate\Support\Facades\Mail; 
+use App\Mail\ReserveMail;
+
 
 class ReservationController extends Controller
 {
-    public function create(Request $request)
+    public function create(ReservationRequest $request)
     {
-        $shop = request('shop_id');       
+        $shop = request('shop_id');  
         $user = Auth::id();
         $number = intval($request->input('number'));
         $date = new Carbon(request('reservation_date'));
@@ -81,5 +86,17 @@ class ReservationController extends Controller
             $shop_reserves = Reservation::whereIn('shop_id', $shop)->paginate(5);
             return view('/manage/reserve_manage', ['shop_reserves' => $shop_reserves]);            
         }
+    }
+
+    // 利用者へのメール送信
+    public function mail(Request $request) {
+    $user_id = $request->only(['user_id',]);
+    $user = User::find($user_id['user_id']);
+    $name = $user->name;
+    $shop_id=$request->only(['shop_id',]);
+    $shop = Shop::find($shop_id['shop_id']);
+    $shop_name = $shop->name;
+    Mail::send(new ReserveMail($name,$shop_name));
+    return redirect('/manage/reserve_manage');
     }
 }  

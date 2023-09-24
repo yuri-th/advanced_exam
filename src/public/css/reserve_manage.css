@@ -85,6 +85,16 @@ td {
     height: 60px;
 }
 
+.submit button {
+    width: 80px;
+    height: 30px;
+    font-size: 1.6rem;
+    color: #ffffff;
+    background-color: #0000cd;
+    border: none;
+    border-radius: 5px;
+}
+
 /* -------------ページネーション------------- */
 
 .table-page {

@@ -28,4 +28,8 @@ class Reservation extends Model
     public function shopUser(){
         return ($this->users)->name;
     }
+
+    public function userMail(){
+        return ($this->users)->email;
+    }
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 
 
 
@@ -20,8 +22,6 @@ use App\Http\Controllers\ManagerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 
 Route::middleware('auth')->group(function () {
@@ -39,18 +39,33 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
-// 店舗管理
-Route::get('/manage/shop_manage', [ShopController::class, 'shopmanage']);
-Route::post('/manage/shop_manage', [ShopController::class, 'create'])->name('shopmanage');
-Route::patch('/manage/shop_manage/update', [ShopController::class, 'update']);
-Route::get('/manage/shop_manage/update', [ShopController::class, 'update']);
-Route::get('/manage/shop_manage/search', [ShopController::class, 'search_shop']);
-Route::get('/manage/reserve_manage', [ReservationController::class, 'reserveManage']);
-Route::get('/manage/reserve_manage/search', [ReservationController::class, 'search_reserve']);
-Route::get('/manage/manager_manage', [ManagerController::class, 'manager']);
-Route::post('/manage/manager_manage', [ManagerController::class, 'create']);
+// Route::get('/auth/verify-email', [AuthController::class, 'register']);
+// メール認証
+//  Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
 
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+
+//     return redirect('/home');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
+
+// 管理システム
+Route::prefix('manage')->group(function () {
+    Route::get('/shop_manage', [ShopController::class, 'shopmanage']);
+    Route::post('/shop_manage', [ShopController::class, 'create'])->name('shopmanage');
+    Route::patch('/shop_manage/update', [ShopController::class, 'update']);
+    Route::get('/shop_manage/update', [ShopController::class, 'update']);
+    Route::get('/shop_manage/search', [ShopController::class, 'search_shop']);
+    Route::get('/reserve_manage', [ReservationController::class, 'reserveManage']);
+    Route::get('/reserve_manage/search', [ReservationController::class, 'search_reserve']);
+    Route::post('/reserve_manage/mail', [ReservationController::class, 'mail']);
+    Route::get('/manager_manage', [ManagerController::class, 'manager']);
+    Route::post('/manager_manage', [ManagerController::class, 'create']);
+    Route::get('/manager_manage/search', [ManagerController::class, 'manager_search']);
+});
 
 // Shop画像のアップロード
-Route::post('/upload/upload', [ShopController::class, 'upload'])->name('upload');
-Route::get('/upload/upload', [ShopController::class, 'upload'])->name('upload');
+Route::get('/upload/upload', [ShopController::class, 'upload']);
+Route::post('/upload/upload/image', [ShopController::class, 'upload_image']);

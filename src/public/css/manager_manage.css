@@ -69,6 +69,7 @@ li {
 .manager-information {
     max-width: 1230px;
     margin: 0 auto;
+    padding-bottom: 30px;
 }
 
 .form-contents {
@@ -171,6 +172,19 @@ h2 {
     margin-bottom: 10px;
 }
 
+.create-item_birthday label {
+    width: 150px;
+    display: inline-block;
+}
+
+.create-item_birthday input {
+    display: inline-block;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
 .create-item_postcode label {
     width: 150px;
     display: inline-block;
@@ -257,7 +271,7 @@ td {
 }
 
 .table-area {
-    width: 18%;
+    width: 20%;
 }
 
 .table-area input {
@@ -265,7 +279,7 @@ td {
 }
 
 .table-shop {
-    width: 18%;
+    width: 20%;
 }
 
 .table-shop input {
@@ -273,7 +287,7 @@ td {
 }
 
 .table-name {
-    width: 18%;
+    width: 20%;
 }
 
 .table-name input {
@@ -281,25 +295,11 @@ td {
 }
 
 .table-mail {
-    width: 26%;
+    width: 30%;
 }
 
 .table-mail input {
     width: 100%;
-}
-
-.update {
-    width: 10%;
-}
-
-.update button {
-    width: 80px;
-    height: 30px;
-    font-size: 1.6rem;
-    color: #ffffff;
-    background-color: #808080;
-    border: none;
-    border-radius: 5px;
 }
 
 /* -------------ページネーション------------- */

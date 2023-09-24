@@ -15,9 +15,10 @@ class CreateManagersTable extends Migration
     {
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('shop_id');
+            $table->string('name', 255);
+            $table->date('birthdate');
             $table->char('postcode', 8);
             $table->string('address');
             $table->string('tel', 11);

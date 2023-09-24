@@ -30,17 +30,17 @@
                 <form class="update__form" action="/reserve/update" method="post">
                     @csrf
                     @method('PATCH')
-                    <div>
+                    <div class="confirm__name">
                         <label for="confirm__name" class="form-title">Shop</label>
                         <input type="text" name="name" value="{{$reserve->shopName()}}" readonly />
                         <input type="hidden" name="shop_id" value="{{$reserve->shop_id}}">
                         <input type="hidden" name="id" value="{{$reserve->id}}">
                     </div>
-                    <div>
+                    <div class="confirm__date">
                         <label for="confirm__date" class="form-title">Date</label>
                         <input type="text" name="date" value="{{$reserve->date}}" />
                     </div>
-                    <div>
+                    <div class="confirm__time">
                         <label for="confirm__time" class="form-title">Time</label>
                         <input type="text" name="start_at" value="{{substr($reserve->start_at,0,5)}}" />
                     </div>

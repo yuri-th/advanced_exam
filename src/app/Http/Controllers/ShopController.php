@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ShopRequest;
 
 
 class ShopController extends Controller
@@ -55,10 +56,19 @@ class ShopController extends Controller
     }
 
     //店舗画像の追加・表示
-    
     public function upload()
-    {
+    {   
         return view('/upload/upload');
+    }
+
+    public function upload_image(Request $request)
+    {   
+        $dir = 'images';
+         // アップロードされたファイル名を取得
+        $file_name = $request->file('image')->getClientOriginalName();
+        // 取得したファイル名で保存
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
+        return redirect('/upload/upload');
     }
 
     // 店舗管理：店舗情報の表示
@@ -70,7 +80,7 @@ class ShopController extends Controller
     }
 
     // 店舗情報の作成
-    public function create(Request $request)
+    public function create(ShopRequest $request)
     {
         if ($request->get('action') === 'back') {
             return redirect()->route('shopmanage')->withInput();

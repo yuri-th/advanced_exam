@@ -25,7 +25,7 @@
             <h2>店舗代表者情報</h2>
             <div class="form-contents">
                 <div class="manager-search">
-                    <form class="search-form" action="" method="get">
+                    <form class="search-form" action="/manage/manager_manage/search" method="get">
                         @csrf
                         <div class="search-contents">
                             <div class="search-item">
@@ -59,7 +59,6 @@
                                 <span class="error-message">{{ $message }}</span>
                                 @enderror
                             </div>
-
                             <div class="create-item_shop">
                                 <label for="shop">店舗名</label>
                                 <input type="text" name="shop" value="{{ old('shop')}}" />
@@ -79,13 +78,18 @@
                                 <span class="error-message">{{ $message }}</span>
                                 @enderror
                             </div>
-
+                            <div class="create-item_birthday">
+                                <label for="'birthday">生年月日</label>
+                                <input type="date" name="birthdate" value="{{ old('birthdate')}}" />
+                                @error('birthdate')
+                                <span class="error-message">{{ $message }}</span>
+                                @enderror
+                            </div>
                             <div class="create-item_postcode">
                                 <label for="postcode">郵便番号</label>
                                 <span> 〒 </span>
-                                <!-- <input type="text" name="postcode" /> -->
                                 <input type="hidden" class="p-country-name" value="Japan">
-                                <input type="text" name="postcode" id="postcode" value="{{ old('postcode')}}"
+                                <input type="text" placeholder="100-0003"  name="postcode" id="postcode" value="{{ old('postcode')}}"
                                     onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" z />
                                 @error('postcode')
                                 <span class="error-message">{{ $message }}</span>
@@ -100,7 +104,7 @@
                             </div>
                             <div class="create-item">
                                 <label for="tel">電話番号</label>
-                                <input type="tel" name="tel" value="{{ old('tel')}}" />
+                                <input type="tel" placeholder="0363521321" name="tel" value="{{ old('tel')}}" />
                                 @error('tel')
                                 <span class="error-message">{{ $message }}</span>
                                 @enderror
@@ -119,47 +123,55 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- 登録データ -->
-        <div class="manager-list">
-            <div class="table-page">
-                <div>
-                    <!-- ページネーション -->
+            <!-- 登録データ -->
+            <div class="manager-list">
+                <div class="table-page">
+                    <div>
+                        @if (count($manager_infos) > 0)
+                        <p>全{{ $manager_infos->total() }}件中
+                            {{ ($manager_infos->currentPage() - 1) * $manager_infos->perPage() + 1 }}〜
+                            {{ ($manager_infos->currentPage() - 1) * $manager_infos->perPage() + 1 +
+                            (count($manager_infos)
+                            - 1) }}件</p>
+                        @else
+                        <p>データがありません。</p>
+                        @endif
+                    </div>
+                    <div>
+                        {{ $manager_infos->appends(request()->input())->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
-                <div>
-                    <!-- ページネーション -->
-                </div>
-            </div>
-            <table class="manager-table">
-                <tr class="table-title">
-                    <th>ID</th>
-                    <th>エリア</th>
-                    <th>店舗名</th>
-                    <th>代表者</th>
-                    <th>メールアドレス</th>
-                    <th></th>
-                </tr>
-
-                <form action="" method="">
-                    @csrf
-                    <tr class="table-data">
-                        <input type="hidden" name="firstPage" value="">
-                        <input type="hidden" name="currentPage" value="">
-                        <input type="hidden" name="id" value="">
-                        <td class="table-id"><input type="text" name="id" value="" /></td>
-                        <td class="table-area"><input type="text" name="area" value="" />
-                        </td>
-                        <td class="table-shop"><input type="text" name="shop" value="" />
-                        </td>
-                        <td class="table-name"><input type="text" name="name" value="" /></td>
-                        <td class="table-mail"><input type="text" name="mail" value="" />
-                        </td>
-                        <td class="update"><button type="submit">更新</button></td>
+                <table class="manager-table">
+                    <tr class="table-title">
+                        <th>ID</th>
+                        <th>エリア</th>
+                        <th>店舗名</th>
+                        <th>代表者</th>
+                        <th>メールアドレス</th>
                     </tr>
-                </form>
-
-            </table>
+                    @foreach($manager_infos as $manager_info )
+                    <form action="" method="">
+                        @csrf
+                        <tr class="table-data">
+                            <input type="hidden" name="firstPage" value="{{$manager_infos->url(1)}}">
+                            <input type="hidden" name="currentPage" value="{{$manager_infos->currentPage()}}">
+                            <input type="hidden" name="id" value="">
+                            <td class="table-id"><input type="text" name="id" value="{{$manager_info->id}}" /></td>
+                            <td class="table-area"><input type="text" name="area"
+                                    value="{{$manager_info->getArea()}}" />
+                            </td>
+                            <td class="table-shop"><input type="text" name="shop"
+                                    value="{{$manager_info->getShop()}}" />
+                            </td>
+                            <td class="table-name"><input type="text" name="name" value="{{$manager_info->name}}" />
+                            </td>
+                            <td class="table-mail"><input type="text" name="email" value="{{$manager_info->email}}" />
+                            </td>
+                        </tr>
+                    </form>
+                    @endforeach
+                </table>
+            </div>
         </div>
     </main>
     <script src="{{ asset('js/manager.js') }}"></script>

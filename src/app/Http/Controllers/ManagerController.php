@@ -10,7 +10,8 @@ use App\Http\Requests\ManagerRequest;
 class ManagerController extends Controller
 {
     public function manager(){
-        return view('/manage/manager_manage');
+        $manager_infos = Manager::paginate(5);
+        return view('/manage/manager_manage',['manager_infos' => $manager_infos]);
     }
 
     public function create(ManagerRequest $request)
@@ -26,7 +27,8 @@ class ManagerController extends Controller
             'postcode',
             'address',
             'tel',
-            'email'
+            'email',
+            'birthdate'
         ]);
 
         $shop = Shop::where('name',$form['shop'])->first();
@@ -39,9 +41,30 @@ class ManagerController extends Controller
             'postcode' => $form['postcode'],
             'address' => $form['address'],
             'tel' => $form['tel'],
-            'email' => $form['email']
+            'email' => $form['email'],
+            'birthdate' => $form['birthdate']
             ]);
 
-        return view('/manage/manager_manage');
+        $manager_infos = Manager::paginate(5);
+        return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
+    }
+
+    public function manager_search(Request $request)
+    {
+        if ($request->name !== null && $request->area_id == null) {
+            $shops = Shop::KeywordSearch($request->name)->get();
+            $shop_id = $shops->pluck('id')->toArray();
+            $manager_infos = Manager::whereIn('shop_id', $shop_id)->paginate(10);
+            return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
+
+            } else if ($request->name == null && $request->area_id !== null) {
+            $manager_infos = Manager::where('area_id', $request->area_id)->paginate(10);
+            return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
+            } else {
+                $shops = Shop::KeywordSearch($request->name)->get();
+                $shop_id = $shops->pluck('id')->toArray();
+                $manager_infos = Manager::whereIn('shop_id', $shop_id)->where('area_id', $request->area_id)->paginate(10);
+                return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
+            }
     }
 }

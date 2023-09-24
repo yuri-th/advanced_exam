@@ -55,17 +55,27 @@
         <th>DATE</th>
         <th>TIME</th>
         <th>人数</th>
+        <th>E-mail</th>
+        <th></th>
       </tr>
       @foreach($shop_reserves as $shop_reserve )
       <tr class="table-data">
         <input type="hidden" name="firstPage" value="">
         <input type="hidden" name="currentPage" value="">
         <input type="hidden" name="shop_id" value="">
-        <td class="table-user">{{$shop_reserve->shopUser()}}</td>
-        <td class="table-name">{{$shop_reserve->shopName()}}</td>
-        <td class="table-date">{{$shop_reserve->date}}</td>
-        <td class="table-time">{{substr($shop_reserve->start_at,0,5)}}</td>
-        <td class="table-number">{{$shop_reserve->num_of_users}}</td>
+        <form class="mail-form" action="/manage/reserve_manage/mail" method="post">
+          @csrf
+          <td class="table-user">{{$shop_reserve->shopUser()}}</td>
+          <td class="table-name">{{$shop_reserve->shopName()}}</td>
+          <td class="table-date">{{$shop_reserve->date}}</td>
+          <td class="table-time">{{substr($shop_reserve->start_at,0,5)}}</td>
+          <td class="table-number">{{$shop_reserve->num_of_users}}</td>
+
+          <td class="table-mail">{{$shop_reserve->userMail()}}</td>
+          <input type="hidden" name="user_id" value="{{$shop_reserve->user_id}}">
+          <input type="hidden" name="shop_id" value="{{$shop_reserve->shop_id}}">
+          <td class="submit"><button type="submit">送信</button></td>
+        </form>
       </tr>
       @endforeach
     </table>

@@ -32,6 +32,7 @@ class ManagerRequest extends FormRequest
             'postcode' => 'required|regex:/^[0-9]{3}-[0-9]{4}$/',
             'address' => 'required',
             'tel' => 'required|regex:/^[0-9]{1,11}$/',
+            'birthdate' => 'required',
         ];
     }
 
@@ -48,6 +49,7 @@ class ManagerRequest extends FormRequest
             'address.required' => '住所を入力してください',
             'tel.required' => '電話番号を入力してください',
             'tel.tel' => '電話番号は例の形式で１１文字以内で入力してください',
+            'birthdate.required' => '誕生日を入力してください',
         ];
     }
 }

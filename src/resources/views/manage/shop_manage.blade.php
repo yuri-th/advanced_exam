@@ -38,37 +38,50 @@
           @csrf
           <div class="create-item">
             <label for="name">店舗名</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value="{{ old('name')}}" />
+            @error('name')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
           </div>
-          <div class="select-section">
-            <div class="create-item">
-              <label for="area">エリア</label>
-              <select name="area_id">
-                <option value="">Area</option>
-                <option value="1">東京都</option>
-                <option value="2">大阪府</option>
-                <option value="3">福岡県</option>
-              </select>
-            </div>
-            <div class="create-item">
-              <label for="genre">ジャンル</label>
-              <select name="genre_id">
-                <option value="">Genre</option>
-                <option value="1">寿司</option>
-                <option value="2">焼肉</option>
-                <option value="3">居酒屋</option>
-                <option value="4">イタリアン</option>
-                <option value="5">ラーメン</option>
-              </select>
-            </div>
+          <div class="create-item">
+            <label for="area">エリア</label>
+            <select name="area_id">
+              <option value="">Area</option>
+              <option value="1" @if(old('area_id')==1) selected @endif>東京都</option>
+              <option value="2" @if(old('area_id')==2) selected @endif>大阪府</option>
+              <option value="3" @if(old('area_id')==3) selected @endif>福岡県</option>
+            </select>
+            @error('area_id')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+          </div>
+          <div class="create-item">
+            <label for="genre">ジャンル</label>
+            <select name="genre_id">
+              <option value="">Genre</option>
+              <option value="1" @if(old('genre_id')==1) selected @endif>寿司</option>
+              <option value="2" @if(old('genre_id')==2) selected @endif>焼肉</option>
+              <option value="3" @if(old('genre_id')==3) selected @endif>居酒屋</option>
+              <option value="4" @if(old('genre_id')==4) selected @endif>イタリアン</option>
+              <option value="5" @if(old('genre_id')==5) selected @endif>ラーメン</option>
+            </select>
+            @error('genre_id')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
           </div>
           <div class="create-item__image">
             <label for="image_url">画像URL</label>
-            <input type="url" name="image_url" />
+            <input type="url" name="image_url" value="{{ old('image_url')}}" />
+            @error('image_url')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
           </div>
           <div class="create-item">
             <label for="description">店舗詳細</label>
-            <textarea type="text" name="description"></textarea>
+            <textarea type="text" name="description">{{ old('description')}}</textarea>
+            @error('description')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
           </div>
           <div class="create-button">
             <button type="submit">新規作成</button>
@@ -77,7 +90,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- 登録データ -->
   <div class="shop-list">

@@ -38,6 +38,9 @@
             <h2>予約</h2>
             <div class="reservation__form--date">
                 <input type="date" name="reservation_date" id="reservation_date" />
+                @error('reservation_date')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
             <div class="reservation__form--time">
                 <select name="time" id="reservation_time">
@@ -54,6 +57,9 @@
                     <option value="21:30">21:30</option>
                     <option value="22:00">22:00</option>
                 </select>
+                @error('time')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
             <div class="reservation__form--number">
                 <select name="number" id="reservation_number">
@@ -69,6 +75,9 @@
                     <option value="9人">9人</option>
                     <option value="10人">10人</option>
                 </select>
+                @error('number')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
         </div>
         <form class="form" action="/reserve" method="post">
