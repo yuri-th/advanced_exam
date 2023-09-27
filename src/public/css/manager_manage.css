@@ -83,6 +83,14 @@ h2 {
     text-align: center;
 }
 
+.manager__alert--success,
+.alert {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.3rem;
+    color: #333333;
+}
+
 /* ショップ検索 */
 
 .manager-search {

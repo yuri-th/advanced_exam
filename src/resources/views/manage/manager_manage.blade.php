@@ -23,6 +23,21 @@
     <main>
         <div class="manager-information">
             <h2>店舗代表者情報</h2>
+
+            <div class="manager__alert">
+            @if(session('new_message'))
+            <div class="manager__alert--success">
+            {{ session('new_message') }}
+            </div>
+            @endif
+
+            @if(session('error_message'))
+            <div class="alert alert-danger">
+            {{ session('error_message') }}
+            </div>
+            @endif
+            </div>
+
             <div class="form-contents">
                 <div class="manager-search">
                     <form class="search-form" action="/manage/manager_manage/search" method="get">

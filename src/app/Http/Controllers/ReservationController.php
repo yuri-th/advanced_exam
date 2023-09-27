@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Mail; 
 use App\Mail\ReserveMail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 
 class ReservationController extends Controller
@@ -40,7 +42,7 @@ class ReservationController extends Controller
         $user = Auth::id();
         Reservation::with('users')->where('user_id', $user)->where('id',$request->id)->delete();
         
-        return redirect('/mypage'); 
+        return redirect('/mypage')->with('message', 'ご予約をキャンセルしました');
     }
 
     // 予約の更新
@@ -60,7 +62,7 @@ class ReservationController extends Controller
         'num_of_users' => $number, // 人数の更新
         ]);
 
-        return redirect('/mypage');
+        return redirect('/mypage')->with('message', 'ご予約を変更しました');
     }
 
     // 管理ページ
@@ -90,13 +92,22 @@ class ReservationController extends Controller
 
     // 利用者へのメール送信
     public function mail(Request $request) {
-    $user_id = $request->only(['user_id',]);
+    $user_id = $request->only(['user_id']);
     $user = User::find($user_id['user_id']);
     $name = $user->name;
-    $shop_id=$request->only(['shop_id',]);
+    $shop_id=$request->only(['shop_id']);
     $shop = Shop::find($shop_id['shop_id']);
     $shop_name = $shop->name;
-    Mail::send(new ReserveMail($name,$shop_name));
+    
+    $reserve_id=$request->only(['id']);
+    $reservation = Reservation::where('id', $reserve_id)->first();
+    $reserve_date = $reservation->date;
+    $reserve_time = substr($reservation->start_at,0,5);
+    $reserve_number = $reservation->num_of_users;
+    
+    // $qrcode=QrCode::size(200)->generate($reserve_id);
+
+    Mail::send(new ReserveMail($name,$shop_name,$reserve_date,$reserve_time,$reserve_number));
     return redirect('/manage/reserve_manage');
     }
 }  

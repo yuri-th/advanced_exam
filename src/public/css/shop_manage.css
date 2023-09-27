@@ -14,6 +14,13 @@ h2 {
     text-align: center;
 }
 
+.shop__alert--success {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.3rem;
+    color: #0066ff;
+}
+
 /* ショップ検索 */
 
 .shop-search {
@@ -73,7 +80,7 @@ h2 {
 }
 
 .create-item label {
-    width: 120px;
+    width: 110px;
     display: inline-block;
 }
 
@@ -81,7 +88,7 @@ h2 {
     display: inline-block;
     width: 300px;
     height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .create-item select {
@@ -89,17 +96,11 @@ h2 {
     width: 300px;
     height: 30px;
     outline: none;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* .select-section {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 10px;
-} */
-
 .create-item__image label {
-    width: 120px;
+    width: 110px;
     display: inline-block;
 }
 
@@ -108,7 +109,7 @@ h2 {
     width: 500px;
     height: 30px;
     outline: none;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 textarea {

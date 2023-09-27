@@ -32,6 +32,11 @@ class ManagerController extends Controller
         ]);
 
         $shop = Shop::where('name',$form['shop'])->first();
+
+        if (!$shop) {
+        return redirect('/manage/manager_manage')->with('error_message', '該当するお店が見つかりません');
+        }
+        
         $shop_id = $shop->id;
          
         Manager::create([
@@ -45,8 +50,8 @@ class ManagerController extends Controller
             'birthdate' => $form['birthdate']
             ]);
 
-        $manager_infos = Manager::paginate(5);
-        return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
+        // $manager_infos = Manager::paginate(5);
+        return redirect('/manage/manager_manage')->with('new_message' ,'店舗代表者を作成しました');
     }
 
     public function manager_search(Request $request)
@@ -54,16 +59,16 @@ class ManagerController extends Controller
         if ($request->name !== null && $request->area_id == null) {
             $shops = Shop::KeywordSearch($request->name)->get();
             $shop_id = $shops->pluck('id')->toArray();
-            $manager_infos = Manager::whereIn('shop_id', $shop_id)->paginate(10);
+            $manager_infos = Manager::whereIn('shop_id', $shop_id)->paginate(5);
             return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
 
             } else if ($request->name == null && $request->area_id !== null) {
-            $manager_infos = Manager::where('area_id', $request->area_id)->paginate(10);
+            $manager_infos = Manager::where('area_id', $request->area_id)->paginate(5);
             return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
             } else {
                 $shops = Shop::KeywordSearch($request->name)->get();
                 $shop_id = $shops->pluck('id')->toArray();
-                $manager_infos = Manager::whereIn('shop_id', $shop_id)->where('area_id', $request->area_id)->paginate(10);
+                $manager_infos = Manager::whereIn('shop_id', $shop_id)->where('area_id', $request->area_id)->paginate(5);
                 return view('/manage/manager_manage', ['manager_infos' => $manager_infos]);
             }
     }

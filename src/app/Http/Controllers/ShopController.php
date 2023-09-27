@@ -95,7 +95,7 @@ class ShopController extends Controller
         ]);
 
         Shop::create($info);
-        return redirect('/manage/shop_manage');
+        return redirect('/manage/shop_manage')->with('new_message', '店舗情報を作成しました');
     }
 
     // 店舗情報の更新
@@ -119,9 +119,9 @@ class ShopController extends Controller
         ]);
 
         if ($request->currentPage == 1) {
-            return redirect($request->firstPage);
+            return redirect($request->firstPage)->with('new_message', '店舗情報を更新しました');
         } else {
-            return back();
+            return back()->with('new_message', '店舗情報を更新しました');
         }
     }
 

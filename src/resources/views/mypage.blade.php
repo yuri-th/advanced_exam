@@ -9,6 +9,15 @@
     <h1>
         <?php $user = Auth::user(); ?>{{ $user->name }}さん
     </h1>
+
+    <div class="reserve__alert">
+    @if(session('message'))
+    <div class="reserve__alert--success">
+    {{ session('message') }}
+    </div>
+    @endif
+    </div>
+
     <div class="mypage__content">
         <div class="reservation__status">
             <h2>予約状況</h2>

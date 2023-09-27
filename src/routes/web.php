@@ -7,6 +7,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
@@ -39,18 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
  });
 
-// Route::get('/auth/verify-email', [AuthController::class, 'register']);
-// メール認証
-//  Route::get('/email/verify', function () {
-//     return view('auth.verify-email');
-// })->middleware('auth')->name('verification.notice');
-
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-
-//     return redirect('/home');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
-
 // 管理システム
 Route::prefix('manage')->group(function () {
     Route::get('/shop_manage', [ShopController::class, 'shopmanage']);
@@ -69,3 +58,9 @@ Route::prefix('manage')->group(function () {
 // Shop画像のアップロード
 Route::get('/upload/upload', [ShopController::class, 'upload']);
 Route::post('/upload/upload/image', [ShopController::class, 'upload_image']);
+
+// stripe決済
+Route::prefix('payment')->name('payment.')->group(function () {
+    Route::get('/stripe', [PaymentController::class, 'create'])->name('create');
+    Route::post('/store', [PaymentController::class, 'store'])->name('store');
+});

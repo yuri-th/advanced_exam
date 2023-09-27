@@ -7,6 +7,15 @@
 @section('content')
 <div class="shop-information">
   <h2>店舗情報</h2>
+
+    <div class="shop__alert">
+    @if(session('new_message'))
+    <div class="shop__alert--success">
+    {{ session('new_message') }}
+    </div>
+    @endif
+    </div>
+
   <div class="form-contents">
     <div class="shop-search">
       <form class="search-form" action="/manage/shop_manage/search" method="get">

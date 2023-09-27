@@ -74,6 +74,7 @@
           <td class="table-mail">{{$shop_reserve->userMail()}}</td>
           <input type="hidden" name="user_id" value="{{$shop_reserve->user_id}}">
           <input type="hidden" name="shop_id" value="{{$shop_reserve->shop_id}}">
+          <input type="hidden" name="id" value="{{$shop_reserve->id}}">
           <td class="submit"><button type="submit">送信</button></td>
         </form>
       </tr>

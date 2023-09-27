@@ -17,10 +17,13 @@ class ReserveMail extends Mailable
      *
      * @return void
      */
-    public function __construct($name,$shop_name)
+    public function __construct($name,$shop_name,$reserve_date,$reserve_time,$reserve_number)
     {
         $this->name = $name;
         $this->shop_name = $shop_name;
+        $this->reserve_date = $reserve_date;
+        $this->reserve_time = $reserve_time;
+        $this->reserve_number = $reserve_number;
     }
 
     /**
@@ -29,12 +32,12 @@ class ReserveMail extends Mailable
      * @return $this
      */
     public function build()
-    {   // ユーザーテーブルからメールアドレスを取得
+    {   // メールアドレスを取得
         $userEmail = User::where('name', $this->name)->value('email');
-        // メールを構築
+        
         return $this->to($userEmail) // 送信先アドレス
         ->subject('ご予約ありがとうございます')//件名
         ->view('manage.reserve_mail') //本文
-        ->with(['name' => $this->name,'shop_name'=>$this->shop_name]);
+        ->with(['name' => $this->name,'shop_name'=>$this->shop_name,'reserve_date'=>$this->reserve_date,'reserve_time'=>$this->reserve_time,'reserve_number'=>$this->reserve_number]);
     }
 }
