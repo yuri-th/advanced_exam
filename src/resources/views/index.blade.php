@@ -61,6 +61,12 @@
                     <input type="hidden" name="genre_id" value="{{$shop_card->genre_id}}" />
                 </form>
             </div>
+            <!-- レビュー -->
+            <form class="form" action="/review" method="get">
+                    @csrf
+            <div class="card__review"><button type="submit">review</button></div>
+            <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
+            </form>
             <div class="card__button">
                 <form class="form" action="/detail/{{$shop_card->id}}" method="get">
                     @csrf

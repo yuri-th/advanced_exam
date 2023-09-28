@@ -5,6 +5,9 @@ use App\Models\Like;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Reservation;
+use App\Models\ShopReview;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ShopRequest;
@@ -137,6 +140,65 @@ class ShopController extends Controller
         } else {
             $shop_infos = Shop::with('areas')->AreaSearch($request->area_id)->KeywordSearch($request->name)->paginate(10);
             return view('/manage/shop_manage',['shop_infos' => $shop_infos]);
+        }
+    }
+
+
+    // レビュー機能
+    public function review(Request $request) {
+        $user = Auth::id();
+        $shop_id=$request->only(['shop_id']);
+        $shop = Shop::where('id',$shop_id)->first();
+        $shop_name = $shop->name;
+        $reviews = ShopReview::where('user_id', $user)->where('shop_id', $shop_id)->get();
+        
+        return view('/review',['shop_name' => $shop_name],['reviews' => $reviews]);
+    }
+
+    // レビュー投稿
+    public function review_post(Request $request) {
+
+        $review = $request->only([
+            'user_name',
+            'stars',
+            'comment',
+            'shop_name',
+        ]);
+
+        $user = Auth::id();
+        $shop_name = $review['shop_name'];
+        $shop = Shop::Where('name', $shop_name)->first();
+        $shop_id = $shop->id;
+        
+        if ($user) {
+            $reservation = Reservation::with('shops')->Where('shop_id', $shop_id)->where('user_id', $user)->first(); 
+        }
+
+        if ($reservation) {
+        $reservationDate = $reservation->date;
+        $currentDate = Carbon::now(); 
+        
+        // 予約日を過ぎている場合
+        if ($currentDate->greaterThan($reservationDate)) {
+        $name = $review['user_name'];
+        $stars = $review['stars'];
+        $comment = $review['comment'];
+        
+        ShopReview::create([
+            'name' => $name,
+            'shop_id' => $shop_id,
+            'user_id' => $user,
+            'stars'=>$stars,
+            'comment'=>$comment      
+            ]);
+        return redirect()->back()->with('new_message','レビューを投稿しました！');
+            
+        }else if($currentDate->lessThan($reservationDate)){
+        // 予約日を過ぎていない場合の処理
+        return redirect()->back()->with('error_message','レビューはご予約日を過ぎてからご投稿いただけます');
+        }
+        } else {
+        return redirect()->back()->with('error_message-null','ご予約情報が見つかりません');
         }
     }
 }

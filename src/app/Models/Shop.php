@@ -70,5 +70,10 @@ class Shop extends Model
     {
             $query->where('name', $name);    
     }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'shop_reviews');
+    }
     
 }

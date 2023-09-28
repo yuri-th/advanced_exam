@@ -108,6 +108,6 @@ class ReservationController extends Controller
     // $qrcode=QrCode::size(200)->generate($reserve_id);
 
     Mail::send(new ReserveMail($name,$shop_name,$reserve_date,$reserve_time,$reserve_number));
-    return redirect('/manage/reserve_manage');
+    return redirect('/manage/reserve_manage')->with('message', 'メールを送信しました');;
     }
 }  

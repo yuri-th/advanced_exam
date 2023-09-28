@@ -1,0 +1,132 @@
+.review-content {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+h2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.alert {
+    margin-top: 25px;
+    text-align: center;
+    color: red;
+    font-size: 1.8rem;
+}
+
+.review-table {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.review-table table {
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid #00ced1;
+    border-collapse: collapse;
+}
+
+.review-table th,
+.review-table td {
+    border-top: 1px solid #00ced1;
+    border-bottom: 1px solid #00ced1;
+    padding: 10px;
+}
+
+.review-table th {
+    width: 15%;
+    padding: 10px;
+}
+
+.review-table td {
+    width: 75%;
+    padding: 10px;
+}
+
+.td-stars {
+    color: #daa520;
+    font-size: 2rem;
+}
+
+.review-form {
+    margin-top: 30px;
+}
+
+.review-form__table {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.review-form__table table {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #00ced1;
+}
+
+.review-form__table th,
+.review-form__table td {
+    border-top: 1px solid #00ced1;
+    border-bottom: 1px solid #00ced1;
+}
+
+.review-form__table th {
+    width: 15%;
+    padding: 10px;
+}
+
+.review-form__table td {
+    width: 75%;
+    padding: 10px;
+}
+
+.review-form__table table tr:last-child {
+    height: 200px;
+}
+
+.review-post input {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    outline: none;
+}
+
+.review-post select {
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+    background: none;
+    outline: none;
+    font-size: 2rem;
+}
+
+/* .review-post .table-name input {
+    text-align: left;
+    width: 30%;
+    font-size: 1.8rem;
+    background: none;
+    outline: none;
+} */
+
+.review-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.review-post textarea {
+    background: none;
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    outline: none;
+}
+
+.review-btn button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #afeeee;
+}

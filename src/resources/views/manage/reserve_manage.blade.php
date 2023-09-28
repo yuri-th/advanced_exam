@@ -7,6 +7,15 @@
 @section('content')
 <div class="reserve__information">
   <h2>予約情報</h2>
+
+  <div class="shop__alert">
+    @if(session('message'))
+    <div class="shop__alert--success">
+    {{ session('message') }}
+    </div>
+    @endif
+    </div>
+
   <div class="form-contents">
     <div class="shop-search">
       <form class="search-form" action="/manage/reserve_manage/search" method="get">

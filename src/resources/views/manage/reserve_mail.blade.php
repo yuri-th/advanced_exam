@@ -11,5 +11,11 @@
 
 <p>ご来店をお待ちしております。</p>
 
+<div>
+<p>※当店は、便利なStripe決済もご利用いただけます。
+<br>ご利用の際は下記リンク先をクリックしてください。</p>
+<p><a href="http://localhost/payment/stripe">Stripe決済</a></P>
+</div>
+
 *************************
 <div>{{ $shop_name }}</div>

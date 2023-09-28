@@ -38,6 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/reserve/delete', [ReservationController::class, 'delete']);
     Route::get('/done', [ReservationController::class, 'create']);
     Route::get('/mypage', [UserController::class, 'mypage']);
+    // レビュー
+    Route::get('/list', [ShopController::class, 'list']);
+    Route::post('/review',[ShopController::class, 'review']);
+    Route::get('/review',[ShopController::class, 'review']);
+    Route::post('/review/post',[ShopController::class, 'review_post']);
  });
 
 // 管理システム
