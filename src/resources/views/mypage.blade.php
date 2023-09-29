@@ -11,11 +11,11 @@
     </h1>
 
     <div class="reserve__alert">
-    @if(session('message'))
-    <div class="reserve__alert--success">
-    {{ session('message') }}
-    </div>
-    @endif
+        @if(session('message'))
+        <div class="reserve__alert--success">
+            {{ session('message') }}
+        </div>
+        @endif
     </div>
 
     <div class="mypage__content">
@@ -86,6 +86,12 @@
                                 <input type="hidden" name="genre_id" value="{{$shop->genre_id}}" />
                             </form>
                         </div>
+                        <!-- レビュー -->
+                        <form class="form" action="/review" method="get">
+                            @csrf
+                            <div class="card__review"><button type="submit">review</button></div>
+                            <input type="hidden" name="shop_id" value="{{$shop->id}}" />
+                        </form>
                         <div class="card__button">
                             <form class="form" action="/detail/{{$shop->id}}" method="get">
                                 @csrf

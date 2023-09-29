@@ -23,9 +23,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::middleware('auth')->group(function () 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/thanks', [AuthController::class, 'thanks']);
     Route::get('/', [ShopController::class, 'index']);
     Route::get('/area', [ShopController::class, 'search_area']);

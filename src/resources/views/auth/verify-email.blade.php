@@ -8,7 +8,7 @@
 <div class="email-content">
     <div class="email-card">
             <h2>認証リンクを送信しました</h2>
-            <p class="email-card__text">ご登録いただいたメールアドレスへ認証リンクを送信しました。</p><p>クリックして認証を完了させてください。</p>  
+            <p>ご登録いただいたメールアドレスへ認証リンクを送信しました。クリックして認証を完了させてください。</p>
     </div>
 </div>
 @endsection

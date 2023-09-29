@@ -64,7 +64,11 @@
                 <table class="review-post">
                     <tr>
                         <th>名前</th>
-                        <td class="table-name"><input type="text" name="user_name" value="{{ old('user_name')}}" /></td>
+                        <td class="table-name"><input type="text" name="name" value="{{ old('name')}}" />
+                            @error('name')
+                            <p class="error-message">{{ $message }}</p>
+                            @enderror
+                        </td>
                     </tr>
                     <tr>
                         <th>評価</th>
@@ -77,11 +81,18 @@
                                 <option value="4">&#9733&#9733&#9733&#9733</option>
                                 <option value="5" selected>&#9733&#9733&#9733&#9733&#9733</option>
                             </select>
+                            @error('stars')
+                            <p class="error-message">{{ $message }}</p>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <th>コメント</th>
-                        <td><textarea type="text" name="comment">{{ old('description')}}</textarea></td>
+                        <td><textarea type="text" name="comment">{{ old('description')}}</textarea>
+                            @error('comment')
+                            <p class="error-message">{{ $message }}</p>
+                            @enderror
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -90,5 +101,4 @@
         </form>
     </div>
 </div>
-<!-- <script src="{{ asset('js/review.js') }}"></script> -->
 @endsection

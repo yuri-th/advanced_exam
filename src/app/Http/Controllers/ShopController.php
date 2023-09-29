@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ShopRequest;
+use App\Http\Requests\ReviewRequest;
 
 
 class ShopController extends Controller
@@ -150,16 +151,16 @@ class ShopController extends Controller
         $shop_id=$request->only(['shop_id']);
         $shop = Shop::where('id',$shop_id)->first();
         $shop_name = $shop->name;
-        $reviews = ShopReview::where('user_id', $user)->where('shop_id', $shop_id)->get();
+        $reviews = ShopReview::where('shop_id', $shop_id)->get();
         
         return view('/review',['shop_name' => $shop_name],['reviews' => $reviews]);
     }
 
     // レビュー投稿
-    public function review_post(Request $request) {
+    public function review_post(ReviewRequest $request) {
 
         $review = $request->only([
-            'user_name',
+            'name',
             'stars',
             'comment',
             'shop_name',
@@ -176,11 +177,13 @@ class ShopController extends Controller
 
         if ($reservation) {
         $reservationDate = $reservation->date;
-        $currentDate = Carbon::now(); 
-        
-        // 予約日を過ぎている場合
-        if ($currentDate->greaterThan($reservationDate)) {
-        $name = $review['user_name'];
+        $reservationTime=$reservation->start_at;
+        $dateTime = $reservationDate . ' ' . $reservationTime;
+        $currentDate = Carbon::now();
+
+        // 予約日時を過ぎている場合
+        if ($currentDate > $dateTime) {
+        $name = $review['name'];
         $stars = $review['stars'];
         $comment = $review['comment'];
         
@@ -193,9 +196,8 @@ class ShopController extends Controller
             ]);
         return redirect()->back()->with('new_message','レビューを投稿しました！');
             
-        }else if($currentDate->lessThan($reservationDate)){
-        // 予約日を過ぎていない場合の処理
-        return redirect()->back()->with('error_message','レビューはご予約日を過ぎてからご投稿いただけます');
+        }else if($currentDate < $dateTime){
+        return redirect()->back()->with('error_message','レビューはご来店後にご投稿いただけます');
         }
         } else {
         return redirect()->back()->with('error_message-null','ご予約情報が見つかりません');
