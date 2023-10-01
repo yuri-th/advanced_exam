@@ -17,15 +17,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-    
-    // $today = Carbon::today();
-    // $reservations = Reservation::where('date', $today)->get();
-    
-    // foreach ($reservations as $reservation) {
-    //     // 各予約に対してリマインダーを送信するスケジュールを設定
-    //     $schedule->command('reminder:send ' . $reservation->user_id)->dailyAt('17:00');
+    $schedule->command('send:reservation-email')
+             ->dailyAt('18:51'); 
     }
-     // $schedule->command('inspire')->hourly();
     
 
     /**

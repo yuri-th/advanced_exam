@@ -30,14 +30,14 @@ class FortifyServiceProvider extends ServiceProvider
         // }
         // });
 
-        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
-        public function toResponse($request)
-        {
-            return view('auth.verify-email');
-        }
-        });
+        // $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        // public function toResponse($request)
+        // {
+        //     return view('auth.verify-email');
+        // }
+        // });
 
-        $this->app->instance(VerifyEmailResponse::class, new class implements RegisterResponse {
+        $this->app->instance(VerifyEmailResponse::class, new class implements VerifyEmailResponse {
         public function toResponse($request)
         {
             return redirect('/thanks');
@@ -63,6 +63,10 @@ class FortifyServiceProvider extends ServiceProvider
          $email = (string) $request->email;
 
          return Limit::perMinute(10)->by($email . $request->ip());
+     });
+
+     Fortify::VerifyEmailView(function () {
+         return view('auth.verify-email');
      });
 
     }

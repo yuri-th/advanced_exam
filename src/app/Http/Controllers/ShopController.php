@@ -147,7 +147,7 @@ class ShopController extends Controller
 
     // レビュー機能
     public function review(Request $request) {
-        $user = Auth::id();
+        // $user = Auth::id();
         $shop_id=$request->only(['shop_id']);
         $shop = Shop::where('id',$shop_id)->first();
         $shop_name = $shop->name;

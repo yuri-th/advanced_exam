@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Mail; 
 use App\Mail\ReserveMail;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 
 
@@ -24,7 +24,7 @@ class ReservationController extends Controller
         $number = intval($request->input('number'));
         $date = new Carbon(request('reservation_date'));
         $start_at = new Carbon(request('time'));
-         
+
             Reservation::create([
                 'shop_id' => $shop,
                 'user_id' => $user,
@@ -39,10 +39,18 @@ class ReservationController extends Controller
     // 予約の取り消し
     public function delete(Request $request)
     {   
-        $user = Auth::id();
-        Reservation::with('users')->where('user_id', $user)->where('id',$request->id)->delete();
+        // $user = Auth::id();
+        // Reservation::with('users')->where('user_id', $user)->where('id',$request->id)->delete();
+
+        $today = Carbon::now()->toDateString();
+        $reservation_date = Reservation::where('id', $request->id)->value('date');
         
-        return redirect('/mypage')->with('message', 'ご予約をキャンセルしました');
+        if ($today <= $reservation_date) {
+            Reservation::where('id', $request->id)->delete();
+            return redirect('/mypage')->with('message', 'ご予約をキャンセルしました');
+        }else if($today > $reservation_date){
+            return redirect('/mypage')->with('message', 'ご予約日を過ぎています');
+        }
     }
 
     // 予約の更新
@@ -104,8 +112,6 @@ class ReservationController extends Controller
     $reserve_date = $reservation->date;
     $reserve_time = substr($reservation->start_at,0,5);
     $reserve_number = $reservation->num_of_users;
-    
-    // $qrcode=QrCode::size(200)->generate($reserve_id);
 
     Mail::send(new ReserveMail($name,$shop_name,$reserve_date,$reserve_time,$reserve_number));
     return redirect('/manage/reserve_manage')->with('message', 'メールを送信しました');;

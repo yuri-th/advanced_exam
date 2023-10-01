@@ -3,9 +3,12 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Batch;
-use App\Jobs\SendReminderEmail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReminderEmail;
 use App\Models\Reservation;
+use App\Models\User;
+use Carbon\Carbon;
+
 
 class SendReminders extends Command
 {
@@ -14,16 +17,15 @@ class SendReminders extends Command
      *
      * @var string
      */
-    protected $signature = 'reminder:send';
-    // protected $signature = 'command:name';
+    protected $signature = 'send:reservation-email';
+    
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send reminder emails to all users';
-    // protected $description = 'Command description';
+    protected $description = 'Send reservation reminder emails to users on the day of their reservation';
 
     /**
      * Create a new command instance.
@@ -41,12 +43,25 @@ class SendReminders extends Command
      * @return int
      */
     public function handle()
-    {
-        // $users = Reservation::with('users')->get();
-        // $jobs = $users->map(function ($user) {
-        //     return new SendReminderEmail($user);
-        // });
-        // $batch = Batch::dispatch(...$jobs);
-        // $this->info('Reminder emails have been dispatched!');
+    {   
+        $today = Carbon::now()->format('Y-m-d');
+        $reservations = Reservation::whereDate('date', $today)->get();
+        
+        foreach ($reservations as $reservation) {
+            $user = User::find($reservation->user_id);       
+            if ($user) {
+                // ユーザーにメールを送信
+               Mail::to($user->email)->send(new ReminderEmail($user, $reservation));
+            }
+        }
+        $this->info('Reservation reminder emails sent successfully.');
     }
-}
+    }
+
+    // $user = User::with('reservations')->find($reservation->user_id);
+
+
+
+
+
+

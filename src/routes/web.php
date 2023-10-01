@@ -24,9 +24,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 // Route::middleware('auth')->group(function () 
+// Route::middleware(['auth', 'verified'])
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware('verified')->group(function () {
     Route::get('/thanks', [AuthController::class, 'thanks']);
     Route::get('/', [ShopController::class, 'index']);
     Route::get('/area', [ShopController::class, 'search_area']);
