@@ -39,9 +39,6 @@ class ReservationController extends Controller
     // 予約の取り消し
     public function delete(Request $request)
     {   
-        // $user = Auth::id();
-        // Reservation::with('users')->where('user_id', $user)->where('id',$request->id)->delete();
-
         $today = Carbon::now()->toDateString();
         $reservation_date = Reservation::where('id', $request->id)->value('date');
         
@@ -56,21 +53,23 @@ class ReservationController extends Controller
     // 予約の更新
     public function update(Request $request)
     {
-        $user = Auth::id();
+        $today = Carbon::now()->toDateString();
         $date = $request->input('date');
         $time = $request->input('start_at'); 
         $number = $request->input('num_of_users');
-
-        Reservation::with('users')
-        ->where('user_id', $user)
-        ->where('id', $request->id)
+        
+        if ($today <= $date) {
+        Reservation::where('id', $request->id)
         ->update([
-        'date' => $date, // 日付の更新
-        'start_at' => $time, // 時間の更新
-        'num_of_users' => $number, // 人数の更新
+        'date' => $date, 
+        'start_at' => $time, 
+        'num_of_users' => $number, 
         ]);
-
         return redirect('/mypage')->with('message', 'ご予約を変更しました');
+
+        }else if($today > $date){
+        return redirect('/mypage')->with('message', 'ご予約日を過ぎています');
+        }
     }
 
     // 管理ページ

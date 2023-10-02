@@ -48,7 +48,7 @@ class SendReminders extends Command
         $reservations = Reservation::whereDate('date', $today)->get();
         
         foreach ($reservations as $reservation) {
-            $user = User::find($reservation->user_id);       
+            $user = User::with('reservations')->find($reservation->user_id);      
             if ($user) {
                 // ユーザーにメールを送信
                Mail::to($user->email)->send(new ReminderEmail($user, $reservation));
@@ -57,8 +57,6 @@ class SendReminders extends Command
         $this->info('Reservation reminder emails sent successfully.');
     }
     }
-
-    // $user = User::with('reservations')->find($reservation->user_id);
 
 
 
