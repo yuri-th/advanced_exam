@@ -8,7 +8,6 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\PaymentController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 
@@ -23,29 +22,35 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::middleware('auth')->group(function () 
-// Route::middleware(['auth', 'verified'])
 
 
 Route::middleware('verified')->group(function () {
     Route::get('/thanks', [AuthController::class, 'thanks']);
-    Route::get('/', [ShopController::class, 'index']);
-    Route::get('/area', [ShopController::class, 'search_area']);
-    Route::get('/genre', [ShopController::class, 'search_genre']);
-    Route::get('/shopname', [ShopController::class, 'search_name']);
-    Route::get('/detail/{shop}', [ShopController::class, 'detail']);
+    // Route::get('/', [ShopController::class, 'index']);
+    // Route::get('/area', [ShopController::class, 'search_area']);
+    // Route::get('/genre', [ShopController::class, 'search_genre']);
+    // Route::get('/shopname', [ShopController::class, 'search_name']);
+    // Route::get('/detail/{shop}', [ShopController::class, 'detail']);
+    //不要 Route::get('/list', [ShopController::class, 'list']);
+    //不要 Route::post('/review',[ShopController::class, 'review']);
+    // Route::get('/review',[ShopController::class, 'review']);
+    Route::post('/review/post',[ShopController::class, 'review_post']);
     Route::post('/like', [LikeController::class, 'create']);
     Route::post('/reserve', [ReservationController::class, 'create']);
     Route::patch('/reserve/update', [ReservationController::class, 'update']);
     Route::post('/reserve/delete', [ReservationController::class, 'delete']);
     Route::get('/done', [ReservationController::class, 'create']);
-    Route::get('/mypage', [UserController::class, 'mypage']);
-    // レビュー
-    Route::get('/list', [ShopController::class, 'list']);
-    Route::post('/review',[ShopController::class, 'review']);
-    Route::get('/review',[ShopController::class, 'review']);
-    Route::post('/review/post',[ShopController::class, 'review_post']);
+    Route::get('/mypage', [UserController::class, 'mypage']); 
  });
+
+// 一般公開ページ
+    Route::get('/', [ShopController::class, 'index']);
+    Route::get('/area', [ShopController::class, 'search_area']);
+    Route::get('/genre', [ShopController::class, 'search_genre']);
+    Route::get('/shopname', [ShopController::class, 'search_name']);
+    Route::get('/detail/{shop}', [ShopController::class, 'detail']);
+    Route::get('/review',[ShopController::class, 'review']);
+
 
 // 管理システム
 Route::prefix('manage')->group(function () {
@@ -63,11 +68,14 @@ Route::prefix('manage')->group(function () {
 });
 
 // Shop画像のアップロード
-Route::get('/upload/upload', [ShopController::class, 'upload']);
-Route::post('/upload/upload/image', [ShopController::class, 'upload_image']);
+Route::prefix('upload')->group(function () {
+    Route::get('/upload', [ShopController::class, 'upload']);
+    Route::post('/upload/image', [ShopController::class, 'upload_image']);
+});
 
 // stripe決済
 Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/stripe', [PaymentController::class, 'create'])->name('create');
     Route::post('/store', [PaymentController::class, 'store'])->name('store');
-});
+    });  
+

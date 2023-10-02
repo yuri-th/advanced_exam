@@ -22,7 +22,7 @@ class CreateManagersTable extends Migration
             $table->char('postcode', 8);
             $table->string('address');
             $table->string('tel', 11);
-            $table->string('email');
+            $table->string('email', 255)->unique();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();       
         });

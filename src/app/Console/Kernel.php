@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
     $schedule->command('send:reservation-email')
-             ->dailyAt('12:17'); 
+             ->dailyAt('09:00'); 
     }
     
 
