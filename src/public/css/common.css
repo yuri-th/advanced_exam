@@ -83,9 +83,8 @@ li {
     font-weight: 900;
 }
 
-/* ここから下がハンバーガーメニューに関するCSS */
+/* ハンバーガーメニュー */
 
-/* チェックボックスを非表示にする */
 .drawer_hidden {
     display: none;
 }
@@ -102,7 +101,6 @@ li {
     align-items: center;
     position: relative;
     z-index: 100;
-    /* 重なり順を一番上にする */
     cursor: pointer;
 }
 
@@ -120,25 +118,21 @@ li {
     position: absolute;
 }
 
-/* 一番上の線 */
 .drawer_open span:before {
     bottom: 8px;
     width: 12.5px;
     height: 1px
 }
 
-/* 一番下の線 */
 .drawer_open span:after {
     top: 8px;
     width: 7px;
 }
 
-/* アイコンがクリックされたら真ん中の線を透明にする */
 #drawer_input:checked~.drawer_open span {
     background: rgba(255, 255, 255, 0);
 }
 
-/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
 #drawer_input:checked~.drawer_open span::before {
     bottom: 0;
     width: 25px;
@@ -151,8 +145,6 @@ li {
     transform: rotate(-45deg);
 }
 
-/* ハンバーガーメニュー */
-/* メニューのデザイン*/
 .header__nav--list {
     margin-top: 0;
     padding-top: 270px;
@@ -161,7 +153,6 @@ li {
     position: fixed;
     top: 0;
     left: 100%;
-    /* メニューを画面の外に飛ばす */
     z-index: 99;
     background: #fff;
     transition: .5s;
@@ -184,7 +175,6 @@ li {
     list-style: none;
 }
 
-/* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked~.header__nav--list {
     left: 0;
 }
@@ -194,11 +184,6 @@ li {
 }
 
 
-
-
-
-
-/*sp*/
 @media screen and (max-width: 767px) {
 
     .no-sp {
@@ -208,10 +193,6 @@ li {
     .no-pc {
         display: block;
     }
-
-    /* .header {
-        margin: 0 5px;
-    } */
 
     .header__inner {
         padding-right: 25px;

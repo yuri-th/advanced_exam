@@ -17,14 +17,10 @@
     <header class="header">
         <div class="header__contents">
             <div class="header__inner">
-                <!-- ナビ部分 -->
                 <nav class="header__nav">
-                    <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+                    <!-- ハンバーガーメニューの表示・非表示の切り替え -->
                     <input id="drawer_input" class="drawer_hidden" type="checkbox">
-
-                    <!-- ハンバーガーアイコン -->
                     <label for="drawer_input" class="drawer_open"><span></span></label>
-
                     <!-- メニュー -->
                     <ul class="header__nav--list">
                         <li class="header__nav--item">
@@ -58,7 +54,6 @@
             </div>
         </div>
         @yield('header')
-
     </header>
 
     <main class="main">

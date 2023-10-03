@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    // お気に入り登録と削除
      public function create(Request $request)
     {
         $shop_id = request('shop_id');

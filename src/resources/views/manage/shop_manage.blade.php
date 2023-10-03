@@ -8,13 +8,13 @@
 <div class="shop-information">
   <h2>店舗情報</h2>
 
-    <div class="shop__alert">
+  <div class="shop__alert">
     @if(session('new_message'))
     <div class="shop__alert--success">
-    {{ session('new_message') }}
+      {{ session('new_message') }}
     </div>
     @endif
-    </div>
+  </div>
 
   <div class="form-contents">
     <div class="shop-search">

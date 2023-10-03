@@ -56,7 +56,12 @@ class ShopController extends Controller
         $shop_cards = $shop_cards = Shop::KeywordSearch($request->name)->get();
         $user = Auth::id(); 
         $favorite_shops= Like::where('user_id', $user)->get();
-        return view('index',['shop_cards' => $shop_cards],['favorite_shops' => $favorite_shops]);
+
+        if ($shop_cards->isEmpty()) {
+        return view('index', ['shop_cards' => $shop_cards, 'favorite_shops' => $favorite_shops, 'message' => 'データがありません']);
+        } else {
+        return view('index', ['shop_cards' => $shop_cards, 'favorite_shops' => $favorite_shops]);
+        }
     }
 
     //店舗画像の追加・表示
@@ -68,9 +73,7 @@ class ShopController extends Controller
     public function upload_image(Request $request)
     {   
         $dir = 'images';
-         // アップロードされたファイル名を取得
         $file_name = $request->file('image')->getClientOriginalName();
-        // 取得したファイル名で保存
         $request->file('image')->storeAs('public/' . $dir, $file_name);
         return redirect('/upload/upload');
     }

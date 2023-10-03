@@ -42,11 +42,11 @@ class ReservationController extends Controller
         $today = Carbon::now()->toDateString();
         $reservation_date = Reservation::where('id', $request->id)->value('date');
         
-        if ($today <= $reservation_date) {
+        if ($today < $reservation_date) {
             Reservation::where('id', $request->id)->delete();
             return redirect('/mypage')->with('message', 'ご予約をキャンセルしました');
-        }else if($today > $reservation_date){
-            return redirect('/mypage')->with('message', 'ご予約日を過ぎています');
+        }else if($today >= $reservation_date) {
+            return redirect('/mypage')->with('message', 'キャンセルは当日の前日まで受付しております');
         }
     }
 
@@ -57,23 +57,31 @@ class ReservationController extends Controller
         $date = $request->input('date');
         $time = $request->input('start_at'); 
         $number = $request->input('num_of_users');
-        
-        if ($today <= $date) {
-        Reservation::where('id', $request->id)
-        ->update([
-        'date' => $date, 
-        'start_at' => $time, 
-        'num_of_users' => $number, 
-        ]);
-        return redirect('/mypage')->with('message', 'ご予約を変更しました');
 
-        }else if($today > $date){
-        return redirect('/mypage')->with('message', 'ご予約日を過ぎています');
+        if ($today < $date) {
+            $startLimit = Carbon::createFromTime(17, 0, 0);
+            $endLimit = Carbon::createFromTime(22, 0, 0);
+            $startTime = Carbon::parse($time);
+
+            if ($startTime >= $startLimit && $startTime <= $endLimit) {
+
+                Reservation::where('id', $request->id)
+                    ->update([
+                        'date' => $date,
+                        'start_at' => $time,
+                        'num_of_users' => $number,
+                    ]);
+                return redirect('/mypage')->with('message', 'ご予約を変更しました');
+            } else {
+                return redirect('/mypage')->with('message', '予約時間帯は17:00から22:00で受付しております');
+            }
+
+        }else if($today >= $date){
+        return redirect('/mypage')->with('message', 'ご予約の変更は当日の前日まで受付しております');
         }
     }
 
     // 管理ページ
-
     public function reserveManage()
     {
         $shop_reserves = Reservation::paginate(5);

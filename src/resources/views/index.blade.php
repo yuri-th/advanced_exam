@@ -41,6 +41,10 @@
 @endsection
 
 @section('content')
+
+@if(isset($message))
+<p class=search_message>{{ $message }}</p>
+@endif
 <div class="shop__flex--item">
     @foreach ($shop_cards as $shop_card)
     <div class="shop__card">
@@ -63,9 +67,9 @@
             </div>
             <!-- レビュー -->
             <form class="form" action="/review" method="get">
-                    @csrf
-            <div class="card__review"><button type="submit">review</button></div>
-            <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
+                @csrf
+                <div class="card__review"><button type="submit">review</button></div>
+                <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
             </form>
             <div class="card__button">
                 <form class="form" action="/detail/{{$shop_card->id}}" method="get">

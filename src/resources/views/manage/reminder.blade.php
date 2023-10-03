@@ -5,7 +5,7 @@
 
 <ol>
     <li>ご予約日：{{$reservation->date}}</li>
-    <li>時間：{{ \Carbon\Carbon::parse($reservation->start_at)->format('Y-m-d H:i') }}</li>
+    <li>時間：{{ \Carbon\Carbon::parse($reservation->start_at)->format('H:i') }}</li>
     <li>人数：{{$reservation->num_of_users}}人</li>
 </ol>
 

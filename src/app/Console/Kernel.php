@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use Carbon\Carbon;
-use App\Models\Reservation;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

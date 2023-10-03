@@ -44,7 +44,6 @@ class Shop extends Model
         return $this->hasMany('App\Models\Manager');
     }
 
-    // エリア検索
     public function scopeAreaSearch($query, $area_id)
     {
         if (!empty($area_id)) {
@@ -74,6 +73,5 @@ class Shop extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'shop_reviews');
-    }
-    
+    }    
 }

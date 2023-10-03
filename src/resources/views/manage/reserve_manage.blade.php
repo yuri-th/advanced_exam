@@ -11,10 +11,10 @@
   <div class="shop__alert">
     @if(session('message'))
     <div class="shop__alert--success">
-    {{ session('message') }}
+      {{ session('message') }}
     </div>
     @endif
-    </div>
+  </div>
 
   <div class="form-contents">
     <div class="shop-search">

@@ -24,14 +24,14 @@
             @foreach ($reserves as $index => $reserve)
             <div class="reservation__form">
                 <div class="reservation__status-icon">
-                    <div class="icon__clock"><i class="far fa-clock icon__clock--size"></i><span>{{
-                            $index + 1
-                            }}</span>
+                    <div class="icon__clock">
+                        <i class="far fa-clock icon__clock--size"></i>
+                        <span>{{$index + 1}}</span>
                     </div>
                     <form class="delete__form" action="/reserve/delete" method="post">
                         @csrf
-                        <button class="icon__delete" type="submit"><i
-                                class="far fa-times-circle icon__delete--size"></i>
+                        <button class="icon__delete" type="submit">
+                            <i class="far fa-times-circle icon__delete--size"></i>
                         </button>
                         <input type="hidden" name="id" value="{{$reserve->id}}">
                     </form>
@@ -56,7 +56,6 @@
                     <div class="confirm__number">
                         <label for="confirm__number" class="form-title">Number</label>
                         <input type="text" name="num_of_users" value="{{$reserve->num_of_users}}" />
-                        <span class="confirm__number-span">人</span>
                     </div>
                     <button class="reservation__change--btn" type="submit">変更する</button>
                 </form>

@@ -26,14 +26,6 @@ use App\Http\Controllers\PaymentController;
 
 Route::middleware('verified')->group(function () {
     Route::get('/thanks', [AuthController::class, 'thanks']);
-    // Route::get('/', [ShopController::class, 'index']);
-    // Route::get('/area', [ShopController::class, 'search_area']);
-    // Route::get('/genre', [ShopController::class, 'search_genre']);
-    // Route::get('/shopname', [ShopController::class, 'search_name']);
-    // Route::get('/detail/{shop}', [ShopController::class, 'detail']);
-    //不要 Route::get('/list', [ShopController::class, 'list']);
-    //不要 Route::post('/review',[ShopController::class, 'review']);
-    // Route::get('/review',[ShopController::class, 'review']);
     Route::post('/review/post',[ShopController::class, 'review_post']);
     Route::post('/like', [LikeController::class, 'create']);
     Route::post('/reserve', [ReservationController::class, 'create']);
@@ -50,7 +42,6 @@ Route::middleware('verified')->group(function () {
     Route::get('/shopname', [ShopController::class, 'search_name']);
     Route::get('/detail/{shop}', [ShopController::class, 'detail']);
     Route::get('/review',[ShopController::class, 'review']);
-
 
 // 管理システム
 Route::prefix('manage')->group(function () {
@@ -77,5 +68,6 @@ Route::prefix('upload')->group(function () {
 Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/stripe', [PaymentController::class, 'create'])->name('create');
     Route::post('/store', [PaymentController::class, 'store'])->name('store');
-    });  
+});
+  
 

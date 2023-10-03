@@ -26,7 +26,6 @@ h2 {
 }
 
 
-/*sp*/
 @media screen and (max-width: 767px) {
 
     .email-content {
@@ -36,4 +35,5 @@ h2 {
     h2 {
         font-size: 2.3rem;
     }
+
 }

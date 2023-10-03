@@ -48,7 +48,6 @@
     box-shadow: 4px 3px 4px #a9a9a9;
 }
 
-/* 縦線 */
 .genre__search::before {
     content: "";
     position: absolute;
@@ -110,6 +109,12 @@
     outline: none;
     border-radius: 0px 5px 5px 0px;
     box-shadow: 4px 3px 4px #a9a9a9;
+}
+
+.search_message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.8rem;
 }
 
 /* 店舗一覧 */
@@ -214,6 +219,7 @@
 .not-favorite {
     color: #dcdcdc;
 }
+
 
 @media screen and (max-width: 767px) {
 

@@ -6,7 +6,6 @@ use App\Models\Reservation;
 use App\Models\Shop;
 use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

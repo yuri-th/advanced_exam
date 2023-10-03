@@ -7,7 +7,6 @@ function replaceFullToHalf(str) {
     return halfVal.replace(/ー/g, "-");
 }
 
-// var form = document.forms.contactform;
 var PostCode = document.getElementById("postcode");
 PostCode.addEventListener("change", function () {
     var strdata = document.getElementById("postcode").value;

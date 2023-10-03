@@ -66,6 +66,7 @@ li {
 }
 
 /* 代表者検索・作成 */
+
 .manager-information {
     max-width: 1230px;
     margin: 0 auto;
@@ -166,11 +167,6 @@ h2 {
     margin-bottom: 10px;
     outline: none;
 }
-
-/* .create-item_area label {
-    width: 100px;
-    display: inline-block;
-} */
 
 .create-item select {
     display: inline-block;
