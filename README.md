@@ -15,7 +15,7 @@
     お店の画像をストレージに保存/予約者にメールでお知らせを送信/予約日当日の朝に予約者にリマインダー送信/Stripe決済機能（メールに添付）/レスポンシブデザイン（ブレイクポイント768px)</p>
  </li>
  <li>使用技術
-   <p>Laravel Framework 8.83.27</p>
+   <p>Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript</p>
  </li>
   <li>テーブル設計
     
