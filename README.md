@@ -27,6 +27,7 @@
    <p>Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript</p>
  </li>
   <li>テーブル設計
+  <div><img src="https://github.com/yuri-th/Advanced_exam/issues/1#issue-1925320136" width="800"></div>
     
   </li>
   <li>ER図
