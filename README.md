@@ -37,7 +37,24 @@ Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript<br>
 <img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/938a3170-7eee-48b6-b8a4-e74ce6e43566" width="700"><br>
 
 ## 環境構築<br>
+・プロジェクトをコピーしたいディレクトリにて「git clone https://github.com/yuri-th/advanced_exam.git」を行いプロジェクトをコピー<br>
+・「cd advanced_exam/src」を行い.env.example のあるディレクトリに移動<br>
+・.env.example をコピーし.env を作成<br>
+・.env の DB_DATABASE=laravel_db DB_USERNAME=laravel_user DB_PASSWORD=laravel_pass を記載<br>
+・docker-compose.yml の存在するディレクトリにて「docker-compose up -d --build」<br>
+・php コンテナに入る「docker-compose exec php bash」<br>
+・コンポーザのアップデートを行う「composer update」<br>
+・APP_KEY の作成「php artisan key:generate」<br>
+・テーブルの作成「php artisan migrate」または「php artisan migrate:fresh」<br>
+※環境により「fresh」をつけないとテーブルを作成できない場合があります。<br>
+・店舗データ、店舗責任者の作成「php artisan db:seed」<br>
+・権限のエラーが出た場合は「sudo chmod -R 777 src」にて権限解除をしてください。<br>
 
+以上でアプリの使用が可能です。「localhost/」にて店舗一覧、検索ページが開きます。<br>
+認証メール、お知らせメール、リマインダーメールはMailtrapに届きます。<br>
+リマインダーメールは予約日の当日9:00に届きます。<br>
+管理者メールアドレスは、test@example.comです。<br>
+お知らせメール、リマインダーメールにはStripe決済リンクがあります。<br>
 
 ## 追記事項
     
