@@ -2,6 +2,7 @@
   <li>アプリケーション名：Rese（リーズ）
   <p>ある企業のグループ会社の飲食店予約サービス</p>
       <div>◆ユーザーページ</div>
+      <br>
       <div><img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/76ec9549-b17b-4446-8d07-b88df590cea9" width="800"></div>
       <br>
       <div>◆店舗情報管理ページ</div><br>
