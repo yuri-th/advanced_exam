@@ -56,5 +56,6 @@ Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript<br>
 管理者メールアドレスは、test@example.comです。<br>
 お知らせメール、リマインダーメールにはStripe決済リンクがあります。<br>
 
-## 追記事項
+## 追記事項<br>
+・予約の削除はマイページの予約テーブルの×印を押すとできます。（予約日の前日までキャンセル可）
     
