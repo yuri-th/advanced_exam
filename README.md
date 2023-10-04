@@ -37,7 +37,7 @@ Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript<br>
 <img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/938a3170-7eee-48b6-b8a4-e74ce6e43566" width="700"><br>
 
 ## 環境構築<br>
-・プロジェクトをコピーしたいディレクトリにて「git clone https://github.com/yuri-th/advanced_exam.git」を行いプロジェクトをコピー<br>
+・プロジェクトをコピーしたいディレクトリにて「git clone <https://github.com/yuri-th/advanced_exam.git>」を行いプロジェクトをコピー<br>
 ・「cd advanced_exam/src」を行い.env.example のあるディレクトリに移動<br>
 ・.env.example をコピーし.env を作成<br>
 ・.env の DB_DATABASE=laravel_db DB_USERNAME=laravel_user DB_PASSWORD=laravel_pass を記載<br>
