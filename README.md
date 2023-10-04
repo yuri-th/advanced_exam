@@ -31,10 +31,15 @@
   <div>&emsp;<img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/09489295-cccb-4710-8945-c8bfea996bbf" width="760"></div>
   <div>&emsp;<img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/75bf4112-fb4d-4e2c-8c32-d9488a4b38d2" width="760"></div>    
   </li>
+  <br>
   <li>ER図
-    
+  <br>
+  <div><img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/938a3170-7eee-48b6-b8a4-e74ce6e43566" width="700"></div>
   </li>
   <li>環境構築
+    
+  </li>
+   <li>追記事項
     
   </li>
 </ol>
