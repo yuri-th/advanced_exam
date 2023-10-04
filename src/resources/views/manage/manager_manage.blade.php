@@ -104,7 +104,7 @@
                                 <label for="postcode">郵便番号</label>
                                 <span> 〒 </span>
                                 <input type="hidden" class="p-country-name" value="Japan">
-                                <input type="text" placeholder="100-0003"  name="postcode" id="postcode" value="{{ old('postcode')}}"
+                                <input type="text" placeholder="例）100-0003"  name="postcode" id="postcode" value="{{ old('postcode')}}"
                                     onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" z />
                                 @error('postcode')
                                 <span class="error-message">{{ $message }}</span>
@@ -119,14 +119,14 @@
                             </div>
                             <div class="create-item">
                                 <label for="tel">電話番号</label>
-                                <input type="tel" placeholder="0363521321" name="tel" value="{{ old('tel')}}" />
+                                <input type="tel" placeholder="例）0363521321" name="tel" value="{{ old('tel')}}" />
                                 @error('tel')
                                 <span class="error-message">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="create-item">
                                 <label for="mail">メールアドレス</label>
-                                <input type="email" name="email" value="{{ old('email')}}" />
+                                <input type="email" placeholder="例）example@test.com" name="email" value="{{ old('email')}}" />
                                 @error('email')
                                 <span class="error-message">{{ $message }}</span>
                                 @enderror

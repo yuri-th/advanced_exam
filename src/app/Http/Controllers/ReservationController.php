@@ -54,11 +54,13 @@ class ReservationController extends Controller
     public function update(Request $request)
     {
         $today = Carbon::now()->toDateString();
+        $reserve_id =$request->id;
+        $reserve_date=Reservation::where('id',$reserve_id) ->value('date');
         $date = $request->input('date');
         $time = $request->input('start_at'); 
         $number = $request->input('num_of_users');
 
-        if ($today < $date) {
+        if ($today < $reserve_date && $today < $date) {
             $startLimit = Carbon::createFromTime(17, 0, 0);
             $endLimit = Carbon::createFromTime(22, 0, 0);
             $startTime = Carbon::parse($time);
@@ -73,10 +75,11 @@ class ReservationController extends Controller
                     ]);
                 return redirect('/mypage')->with('message', 'ご予約を変更しました');
             } else {
-                return redirect('/mypage')->with('message', '予約時間帯は17:00から22:00で受付しております');
+                return redirect('/mypage')->with('message', '予約時間は17:00から22:00で受付しております');
             }
-
-        }else if($today >= $date){
+        } else if($today >= $date){
+                return redirect('/mypage')->with('message', '明日以降の日付をご入力ください');
+        } else if($today >= $reserve_date){
         return redirect('/mypage')->with('message', 'ご予約の変更は当日の前日まで受付しております');
         }
     }

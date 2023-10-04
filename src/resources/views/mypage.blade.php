@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="mypage">
-    <h1>
+    <h1 class="user-name">
         <?php $user = Auth::user(); ?>{{ $user->name }}さん
     </h1>
 

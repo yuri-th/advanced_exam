@@ -24,7 +24,7 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'reservation_date' => 'required|date|after_or_equal:today',
+            'reservation_date' => 'required|date|after_or_equal:tomorrow',
             'time' => 'required', 
             'number' => 'required'
         ];
@@ -34,7 +34,7 @@ class ReservationRequest extends FormRequest
     {
         return [
             'reservation_date.required' => '予約日を入力してください',
-            'reservation_date.after_or_equal' => '予約日は本日以降でご入力ください',
+            'reservation_date.after_or_equal' => '予約日は翌日以降の日付をご入力ください',
             'time.required' => '時間を入力してください',
             'number.required' => '人数を入力してください'      
         ];
