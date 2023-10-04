@@ -1,13 +1,16 @@
 <ol>
   <li>アプリケーション名：Rese（リーズ）
   <p>ある企業のグループ会社の飲食店予約サービス</p>
-      ユーザーページ
-      ![rese](https://github.com/yuri-th/Advanced_exam/assets/117786989/76ec9549-b17b-4446-8d07-b88df590cea9)
-      
-
-
-    
+      <div>◆ユーザーページ</div>
+      <div><img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/76ec9549-b17b-4446-8d07-b88df590cea9" width="800"></div>
+      <br>
+      <div>◆店舗情報管理ページ</div><br>
+      <div><img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/914b133c-74e3-47af-af54-0bbd0c7cb8ec" width="800"></div>
+      <br>
+      <div>◆店舗代表者管理ページ</div><br>
+      <div><img src="https://github.com/yuri-th/Advanced_exam/assets/117786989/07ca485d-b557-4d81-ab6d-d23e0a19a3ab" width="800"></div>
   </li>
+  <br>
   <li>作成の目的
   <p>外部の飲食店予約サービスを利用すると手数料がかかるので、自社で予約サービスを作って管理するため。</p>
   </li>
