@@ -38,9 +38,6 @@ Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript<br>
 
 ## 環境構築<br>
 
+
+## 追記事項
     
-  </li>
-   <li>追記事項
-    
-  </li>
-</ol>
