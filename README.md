@@ -47,7 +47,7 @@ Laravel Framework 8.83.27/HTML/CSS/PHP/JavaScript<br>
 ・APP_KEY の作成「php artisan key:generate」<br>
 ・テーブルの作成「php artisan migrate」または「php artisan migrate:fresh」<br>
 ※環境により「fresh」をつけないとテーブルを作成できない場合があります。<br>
-・店舗データ、店舗責任者の作成「php artisan db:seed」<br>
+・ユーザー、店舗データ、店舗責任者の作成「php artisan db:seed」<br>
 ・権限のエラーが出た場合は「sudo chmod -R 777 src」にて権限解除をしてください。<br>
 
 以上でアプリの使用が可能です。「localhost/」にて店舗一覧、検索ページが開きます。<br>

@@ -15,8 +15,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'name' => '岡本太郎',
-            'email' => 'taro@example.com',
+            'name' => '岡本としこ',
+            'email' => 'toshiko@example.com',
+            'email_verified_at' => now(), 
             'password' => bcrypt('12312312'),
         ];
         DB::table('users')->insert($param);
