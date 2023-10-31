@@ -26,7 +26,10 @@ use App\Http\Controllers\PaymentController;
 
 Route::middleware('verified')->group(function () {
     Route::get('/thanks', [AuthController::class, 'thanks']);
+    // Route::post('/review', [ShopController::class, 'upload'])->name('upload');
     Route::post('/review/post',[ShopController::class, 'review_post']);
+    Route::post('/review/update',[ShopController::class, 'review_update']);
+    Route::post('/review/delete',[ShopController::class, 'review_delete']);
     Route::post('/like', [LikeController::class, 'create']);
     Route::post('/reserve', [ReservationController::class, 'create']);
     Route::patch('/reserve/update', [ReservationController::class, 'update']);
@@ -37,6 +40,7 @@ Route::middleware('verified')->group(function () {
 
 // 一般公開ページ
     Route::get('/', [ShopController::class, 'index']);
+    Route::get('/sort', [ShopController::class, 'search_sort']);
     Route::get('/area', [ShopController::class, 'search_area']);
     Route::get('/genre', [ShopController::class, 'search_genre']);
     Route::get('/shopname', [ShopController::class, 'search_name']);
@@ -60,8 +64,8 @@ Route::prefix('manage')->group(function () {
 
 // Shop画像のアップロード
 Route::prefix('upload')->group(function () {
-    Route::get('/upload', [ShopController::class, 'upload']);
-    Route::post('/upload/image', [ShopController::class, 'upload_image']);
+    Route::post('/review', [ShopController::class, 'upload']);
+    // Route::post('/review', [ShopController::class, 'upload_image']);
 });
 
 // stripe決済

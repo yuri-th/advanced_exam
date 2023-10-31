@@ -5,6 +5,19 @@
 @endsection
 
 @section('header')
+<div class="sort__search">
+    <form class="form" action="/sort" method="get" id="Sort_Form">
+        @csrf
+        <select name="sort" id="Sort_Select">
+            <option value="">並び替え：評価高/低</option>
+            <option value="1">ランダム</option>
+            <option value="2">評価が高い順</option>
+            <option value="3">評価が低い順</option>
+        </select>
+    </form>
+</div>
+
+
 <div class="search__contents">
     <div class="area__search">
         <form class="form" action="/area" method="get" id="Area_Form">
@@ -65,12 +78,21 @@
                     <input type="hidden" name="genre_id" value="{{$shop_card->genre_id}}" />
                 </form>
             </div>
-            <!-- レビュー -->
-            <form class="form" action="/review" method="get">
-                @csrf
-                <div class="card__review"><button type="submit">review</button></div>
-                <input type="hidden" name="shop_id" value="{{$shop_card->id}}" />
-            </form>
+
+            @if (!is_null($averageRatings[$shop_card->id]))
+            <div class="card__review">
+                <div id="averageStars" class="star-rating" data-rating="{{ $averageRatings[$shop_card->id] }}">
+                    <star-rating :rating="{{ $averageRatings[$shop_card->id] }}" :increment="0.5" :max-rating="5"
+                        inactive-color="#c0c0c0" active-color="#daa520" :star-size="20" :show-rating="false"
+                        :padding="1" :read-only="true">
+                    </star-rating>
+                </div>
+            </div>
+            @else
+            <div class="card__review"><span>&emsp;</span></div>
+            @endif
+
+
             <div class="card__button">
                 <form class="form" action="/detail/{{$shop_card->id}}" method="get">
                     @csrf
@@ -102,5 +124,24 @@
     </div>
     @endforeach
 </div>
+
+<script>
+    Vue.component('star-rating', VueStarRating.default);
+    new Vue({
+        el: '#averageStars',
+        data: {
+        selectedRating: parseFloat(document.querySelector('#averageStars').getAttribute('data-rating')),
+        isStarsChanged: false
+        },
+        methods: {
+        updateRating(rating) {
+            this.selectedRating = rating;
+            this.isStarsChanged = true;
+        }
+    }
+    });
+</script>
+
 <script src="{{ asset('js/shop.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection

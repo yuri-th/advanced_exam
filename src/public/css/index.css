@@ -1,3 +1,23 @@
+.sort__search {
+    width: 160px;
+    position: relative;
+}
+
+.sort__search select {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 4px 3px 4px #a9a9a9;
+    padding: 16px 16px 16px 10px;
+    border: none;
+    background-color: #fff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 .search__contents {
     display: flex;
 }
@@ -159,13 +179,7 @@
 }
 
 .card__review {
-    margin-top: 8px;
-}
-
-.card__review button {
-    border: none;
-    background: none;
-    font-size: 1.8rem;
+    margin-top: 3px;
 }
 
 .card__ttl {

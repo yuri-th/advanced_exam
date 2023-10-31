@@ -1,126 +1,183 @@
 .review-content {
+    position: relative;
+    display: flex;
+}
+
+/* ショップ情報 */
+
+.shop_info {
+    margin-top: 90px;
+    width: 45%;
+}
+
+h1 {
+    display: block;
     margin: 0 auto;
-    max-width: 700px;
+    padding-bottom: 60px;
+    width: 70%;
+    font-size: 4rem;
+    font-weight: 500;
 }
 
-h2 {
-    margin-top: 20px;
-    text-align: center;
+.shop__card {
+    margin: 0 auto;
+    width: 60%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 25px;
 }
 
-.alert {
-    margin-top: 25px;
-    text-align: center;
-    color: red;
+.shop__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 8px 8px 0 0;
+}
+
+.card__content {
+    padding: 13px 25px;
+}
+
+.card__review {
+    margin-top: 8px;
+}
+
+.card__review button {
+    border: none;
+    background: none;
     font-size: 1.8rem;
 }
 
-.review-table {
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: left;
+.card__ttl {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
-.review-table table {
-    width: 90%;
-    margin: 10px auto;
-    border: 1px solid #00ced1;
-    border-collapse: collapse;
+.tag {
+    display: flex;
+    gap: 5px;
 }
 
-.review-table th,
-.review-table td {
-    border-top: 1px solid #00ced1;
-    border-bottom: 1px solid #00ced1;
-    padding: 10px;
+.card__tag--area,
+.card__tag--genre {
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    white-space: nowrap;
 }
 
-.review-table th {
-    width: 15%;
-    padding: 10px;
+.card__button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.review-table td {
-    width: 75%;
-    padding: 10px;
+.card__button--details {
+    border: none;
+    padding: 8px 12px;
+    background: #0066ff;
+    margin-bottom: 13px;
+    display: inline-block;
+    color: #fff;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    border-radius: 5px;
 }
 
-.td-stars {
-    color: #daa520;
-    font-size: 2rem;
+.card__button--like {
+    border: none;
+    background: none;
+    color: #dcdcdc;
+    font-size: 3rem;
 }
 
+.favorite {
+    color: red;
+}
+
+.not-favorite {
+    color: #dcdcdc;
+}
+
+.vertical-line {
+    border-left: 1px solid #000;
+    margin-left: 20px;
+    margin-top: 100px;
+    height: 470px;
+}
+
+/* レビュー */
 .review-form {
+    width: 55%;
+    margin-top: 30px;
+    margin-left: 50px;
+    padding: 10px;
+}
+
+h3 {
+    font-size: 2.3rem;
+}
+
+.star-rating {
+    margin-top: 10px;
+}
+
+.review-input {
     margin-top: 30px;
 }
 
-.review-form__table {
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: left;
-}
-
-.review-form__table table {
-    width: 90%;
-    margin: 0 auto;
-    border: 1px solid #00ced1;
-}
-
-.review-form__table th,
-.review-form__table td {
-    border-top: 1px solid #00ced1;
-    border-bottom: 1px solid #00ced1;
-}
-
-.review-form__table th {
-    width: 15%;
+textarea {
+    margin-top: 20px;
+    background: none;
     padding: 10px;
-}
-
-.review-form__table td {
-    width: 75%;
-    padding: 10px;
-}
-
-.review-form__table table tr:last-child {
+    width: 80%;
     height: 200px;
-}
-
-.review-post input {
-    text-align: left;
-    width: 100%;
-    padding: 10px;
-    background: none;
     outline: none;
 }
 
-.review-post select {
-    text-align: left;
-    width: 100%;
-    padding: 5px;
-    background: none;
-    outline: none;
+::placeholder {
+    color: #666666;
+}
+
+.character-limit {
+    width: 80%;
+    text-align: right;
+    font-size: 1.3rem;
+}
+
+.review-form h3:nth-of-type(2) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* .dropzone .large-text {
     font-size: 2rem;
+    line-height: 4rem;
+    font-weight: 700;
 }
+
+.dropzone .small-text {
+    font-size: 1.5rem;
+} */
 
 .review-btn {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.review-post textarea {
-    background: none;
-    padding: 10px;
     width: 100%;
-    height: 200px;
-    outline: none;
+    position: absolute;
+    left: 0;
+    margin-top: 100px;
+    padding-bottom: 100px;
 }
 
 .review-btn button {
+    margin: 0 auto;
+    width: 50%;
+    display: block;
     padding: 15px 30px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: none;
-    background: #afeeee;
+    background: #ffffff;
     font-size: 1.6rem;
     font-weight: 700;
 }
@@ -128,4 +185,63 @@ h2 {
 .error-message {
     margin-top: 5px;
     color: red;
+}
+
+.alert {
+    margin-top: 30px;
+    text-align: center;
+    color: red;
+    font-size: 1.8rem;
+}
+
+.review__alert {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .review-content {
+        padding: 5px;
+        display: block;
+    }
+
+    .shop_info {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    h1 {
+        width: 100%;
+        font-size: 3rem;
+    }
+
+    hr {
+        margin-top: 50px;
+    }
+
+    .review-form {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .star-rating {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    .character-limit {
+        width: 100%;
+        text-align: right;
+        font-size: 1.3rem;
+    }
+
+    .review-btn button {
+        width: 100%;
+    }
+
 }

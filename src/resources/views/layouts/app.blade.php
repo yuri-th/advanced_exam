@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Rese</title>
     <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <script src="https://kit.fontawesome.com/dbdf1c424a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
     @yield('css')
 </head>
 

@@ -1,3 +1,9 @@
+.shop__detail,
+.reservation__form {
+    box-sizing: border-box;
+}
+
+
 .shop__info {
     display: flex;
     justify-content: space-between;
@@ -42,6 +48,7 @@
 
 .reservation__form {
     width: 47%;
+    height: 70%;
     margin-top: -50px;
     background: #0066ff;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
@@ -67,6 +74,75 @@
 .shop__description {
     margin-top: 3rem;
     line-height: 2.3rem;
+}
+
+.review-post_btn {
+    margin-top: 20px;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.review-list_btn {
+    width: 100%;
+    padding: 1.3rem 5rem;
+    font-size: 1.8rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: none;
+    background: #3399ff;
+    color: #fff;
+}
+
+.user-post {
+    position: relative;
+}
+
+.delete_btn {
+    margin-top: 10px;
+    float: right;
+    border: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.edit_btn {
+    position: absolute;
+    top: 11.5px;
+    right: 120px;
+    border: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 1.6rem;
+    font-weight: 700;
+
+}
+
+.star {
+    margin-top: 40px;
+}
+
+.star-rating {
+    margin-top: 10px;
+}
+
+.review-comment {
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.review-comment input {
+    border: none;
+    background: none;
+    font-size: 1.6rem;
+}
+
+.other-user-post .star {
+    margin-top: 10px;
 }
 
 #reservation_date {

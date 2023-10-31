@@ -11,3 +11,10 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && composer self-update
 
 WORKDIR /var/www
+
+# Node.jsとnpmをインストール
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
+# Laravel Mixをインストール
+RUN npm install

@@ -15,4 +15,5 @@ class Genre extends Model
         return $this->hasMany('App\Models\Shop');
     }
 
+
 }

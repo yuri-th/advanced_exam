@@ -24,8 +24,7 @@ class ReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'stars' => 'required',
+            'stars' => 'required|integer|between:1,5',
             'comment' => 'required',
         ];
     }
@@ -33,8 +32,8 @@ class ReviewRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '名前を入力してください',
             'stars.required' => '評価を選択してください',
+            'stars.between' => '評価は1から5の範囲内で指定してください',
             'comment.required' => 'コメントを入力してください',
         ];
     }

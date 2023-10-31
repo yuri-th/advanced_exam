@@ -50,7 +50,7 @@ class ManagerController extends Controller
             'birthdate' => $form['birthdate']
             ]);
 
-        // $manager_infos = Manager::paginate(5);
+        
         return redirect('/manage/manager_manage')->with('new_message' ,'店舗代表者を作成しました');
     }
 
