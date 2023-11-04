@@ -105,7 +105,7 @@
         <h3>体験を評価してください</h3>
         <form class="review-create" action="/review/post" method="post" enctype="multipart/form-data">
             @csrf
-            <!-- v-modelディレクティブを使用して、星評価の値を整数型としてバインド -->
+            <!-- v-modelディレクティブを使用し、星評価の値を整数型としてバインド -->
             <div id="app" class="star-rating">
                 <star-rating @rating-selected="setRating" v-bind:increment="1" v-bind:max-rating="5"
                     inactive-color="#c0c0c0" active-color="#daa520" v-bind:star-size="40" :show-rating="false"
